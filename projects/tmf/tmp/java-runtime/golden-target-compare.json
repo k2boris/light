@@ -1,0 +1,5517 @@
+{
+  "passed": false,
+  "goldenDir": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets",
+  "dataDir": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data",
+  "fileCount": 99,
+  "mismatchCount": 293,
+  "results": [
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY001.json",
+      "partyId": "PARTY001",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY001.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY002.json",
+      "partyId": "PARTY002",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY002.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY003.json",
+      "partyId": "PARTY003",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY003.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY004.json",
+      "partyId": "PARTY004",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY004.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_BILL_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "projectedColumns": [
+            "cust_acct_id",
+            "bill_acct_id",
+            "rel_type"
+          ],
+          "missingRows": [
+            "ca_cust004|ba004|billto"
+          ],
+          "unexpectedRows": [
+            "cust004|ba004|billto"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 11,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust004|flag.profile_complete|y|ncc_eligibility_flag"
+          ],
+          "unexpectedRows": [
+            "ca_cust004|flag.profile_complete.2025-12-23|y|ncc_eligibility_flag"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY005.json",
+      "partyId": "PARTY005",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY005.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_BILL_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "ca_cust005|churnscore|0.76|sbl_churn_score",
+            "ca_cust005|creditclass|c|bscs_customer",
+            "ca_cust005|flag.past_due.2026-01-12|y|ncc_eligibility_flag",
+            "ca_cust005|flag.profile_complete.2025-12-23|y|ncc_eligibility_flag",
+            "ca_cust005|flag.support_escalation.2025-12-08|y|ncc_eligibility_flag",
+            "ca_cust005|modelversion|churn_v3.2|sbl_churn_score",
+            "ca_cust005|pastdueamount|65.38|ncc_offer_qual_request",
+            "ca_cust005|riskband|high|sbl_churn_score",
+            "ca_cust005|riskflag|y|bscs_customer",
+            "ca_cust005|scoreddt|2026-01-20|sbl_churn_score",
+            "ca_cust005|segmentcode|senior|sbl_customer",
+            "ca_cust005|topdriver|network_quality|sbl_churn_score"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 12
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY006.json",
+      "partyId": "PARTY006",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY006.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_BILL_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "projectedColumns": [
+            "cust_acct_id",
+            "bill_acct_id",
+            "rel_type"
+          ],
+          "missingRows": [
+            "ca_cust006|ba006|billto"
+          ],
+          "unexpectedRows": [
+            "cust006|ba006|billto"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust006|flag.profile_complete|y|ncc_eligibility_flag",
+            "ca_cust006|flag.roaming_risk|y|ncc_eligibility_flag"
+          ],
+          "unexpectedRows": [
+            "ca_cust006|flag.profile_complete.2025-12-23|y|ncc_eligibility_flag",
+            "ca_cust006|flag.roaming_risk.2026-01-02|y|ncc_eligibility_flag"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 2
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY007.json",
+      "partyId": "PARTY007",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY007.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY008.json",
+      "partyId": "PARTY008",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY008.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY009.json",
+      "partyId": "PARTY009",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY009.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_BILL_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "projectedColumns": [
+            "cust_acct_id",
+            "bill_acct_id",
+            "rel_type"
+          ],
+          "missingRows": [
+            "ca_cust009|ba009|billto"
+          ],
+          "unexpectedRows": [
+            "cust009|ba009|billto"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust009|flag.port_out_request|y|ncc_eligibility_flag",
+            "ca_cust009|flag.profile_complete|y|ncc_eligibility_flag"
+          ],
+          "unexpectedRows": [
+            "ca_cust009|flag.port_out_request.2026-01-19|y|ncc_eligibility_flag",
+            "ca_cust009|flag.profile_complete.2025-12-23|y|ncc_eligibility_flag"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 2
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY010.json",
+      "partyId": "PARTY010",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY010.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust010|flag.profile_complete|y|ncc_eligibility_flag",
+            "ca_cust010|flag.vip|y|ncc_eligibility_flag"
+          ],
+          "unexpectedRows": [
+            "ca_cust010|flag.profile_complete.2025-12-23|y|ncc_eligibility_flag",
+            "ca_cust010|flag.vip.2025-09-24|y|ncc_eligibility_flag"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 2
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY011.json",
+      "partyId": "PARTY011",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY011.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_BILL_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 2,
+          "actualCount": 2,
+          "projectedColumns": [
+            "cust_acct_id",
+            "bill_acct_id",
+            "rel_type"
+          ],
+          "missingRows": [
+            "ca_cust011|ba011|billto",
+            "ca_cust011|ba012|billto"
+          ],
+          "unexpectedRows": [
+            "cust011|ba011|billto",
+            "cust011|ba012|billto"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 2,
+          "projectedColumns": [
+            "bill_acct_id",
+            "state",
+            "currency",
+            "bill_cycle",
+            "credit_class"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "ba012|active|usd|10|<NULL>"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust011|flag.auto_pay|y|ncc_eligibility_flag",
+            "ca_cust011|flag.data_cap|y|ncc_eligibility_flag",
+            "ca_cust011|flag.fraud_watch|y|ncc_eligibility_flag",
+            "ca_cust011|flag.high_value|y|ncc_eligibility_flag",
+            "ca_cust011|flag.prepaid|y|ncc_eligibility_flag",
+            "ca_cust011|flag.vip|y|ncc_eligibility_flag",
+            "ca_cust011|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust011|flag.auto_pay.2025-06-03|y|ncc_eligibility_flag",
+            "ca_cust011|flag.data_cap.2025-07-01|y|ncc_eligibility_flag",
+            "ca_cust011|flag.fraud_watch.2025-06-22|y|ncc_eligibility_flag",
+            "ca_cust011|flag.high_value.2025-06-13|y|ncc_eligibility_flag",
+            "ca_cust011|flag.prepaid.2025-07-12|y|ncc_eligibility_flag",
+            "ca_cust011|flag.vip.2025-06-19|y|ncc_eligibility_flag"
+          ],
+          "missingRowCount": 7,
+          "unexpectedRowCount": 6
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY012.json",
+      "partyId": "PARTY012",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY012.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust012|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY013.json",
+      "partyId": "PARTY013",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY013.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust013|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY014.json",
+      "partyId": "PARTY014",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY014.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 5,
+          "projectedColumns": [
+            "bill_acct_id",
+            "state",
+            "currency",
+            "bill_cycle",
+            "credit_class"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "ba018|active|usd|1|<NULL>",
+            "ba019|active|usd|22|<NULL>",
+            "ba020|active|usd|26|<NULL>",
+            "ba021|active|usd|27|<NULL>"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 4
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust014|flag.data_cap|y|ncc_eligibility_flag",
+            "ca_cust014|flag.loyalty|y|ncc_eligibility_flag",
+            "ca_cust014|flag.vip|y|ncc_eligibility_flag",
+            "ca_cust014|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust014|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust014|flag.data_cap.2025-06-06|y|ncc_eligibility_flag",
+            "ca_cust014|flag.loyalty.2025-06-08|y|ncc_eligibility_flag",
+            "ca_cust014|flag.vip.2025-06-20|y|ncc_eligibility_flag",
+            "ca_cust014|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 5,
+          "unexpectedRowCount": 4
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY015.json",
+      "partyId": "PARTY015",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY015.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party015|postaladdress|0|153 wacker st"
+          ],
+          "unexpectedRows": [
+            "party015|postaladdress|0|158 main st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust015|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY016.json",
+      "partyId": "PARTY016",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY016.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 3,
+          "projectedColumns": [
+            "bill_acct_id",
+            "state",
+            "currency",
+            "bill_cycle",
+            "credit_class"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "ba025|active|usd|11|<NULL>",
+            "ba026|active|usd|24|<NULL>"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust016|flag.auto_pay|y|ncc_eligibility_flag",
+            "ca_cust016|flag.fraud_watch|y|ncc_eligibility_flag",
+            "ca_cust016|flag.loyalty|y|ncc_eligibility_flag",
+            "ca_cust016|flag.past_due|y|ncc_eligibility_flag",
+            "ca_cust016|flag.vip|y|ncc_eligibility_flag",
+            "ca_cust016|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust016|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust016|flag.auto_pay.2025-06-26|y|ncc_eligibility_flag",
+            "ca_cust016|flag.fraud_watch.2025-06-16|y|ncc_eligibility_flag",
+            "ca_cust016|flag.loyalty.2025-06-29|y|ncc_eligibility_flag",
+            "ca_cust016|flag.past_due.2025-06-10|y|ncc_eligibility_flag",
+            "ca_cust016|flag.vip.2025-06-01|y|ncc_eligibility_flag",
+            "ca_cust016|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 7,
+          "unexpectedRowCount": 6
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY017.json",
+      "partyId": "PARTY017",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY017.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust017|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust017|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust017|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY018.json",
+      "partyId": "PARTY018",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY018.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party018|postaladdress|0|190 state st"
+          ],
+          "unexpectedRows": [
+            "party018|postaladdress|0|195 michigan st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust018|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY019.json",
+      "partyId": "PARTY019",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY019.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party019|postaladdress|0|205 wacker st"
+          ],
+          "unexpectedRows": [
+            "party019|postaladdress|0|210 main st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust019|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY020.json",
+      "partyId": "PARTY020",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY020.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party020|postaladdress|0|227 state st"
+          ],
+          "unexpectedRows": [
+            "party020|postaladdress|0|232 state st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust020|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust020|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust020|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY021.json",
+      "partyId": "PARTY021",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY021.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party021|postaladdress|0|240 lake st"
+          ],
+          "unexpectedRows": [
+            "party021|postaladdress|0|245 main st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust021|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY022.json",
+      "partyId": "PARTY022",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY022.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust022|flag.data_cap|y|ncc_eligibility_flag",
+            "ca_cust022|flag.fraud_watch|y|ncc_eligibility_flag",
+            "ca_cust022|flag.high_value|y|ncc_eligibility_flag",
+            "ca_cust022|flag.loyalty|y|ncc_eligibility_flag",
+            "ca_cust022|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust022|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust022|flag.data_cap.2025-06-19|y|ncc_eligibility_flag",
+            "ca_cust022|flag.fraud_watch.2025-06-03|y|ncc_eligibility_flag",
+            "ca_cust022|flag.high_value.2025-06-27|y|ncc_eligibility_flag",
+            "ca_cust022|flag.loyalty.2025-06-09|y|ncc_eligibility_flag",
+            "ca_cust022|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 6,
+          "unexpectedRowCount": 5
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY023.json",
+      "partyId": "PARTY023",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY023.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust023|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY024.json",
+      "partyId": "PARTY024",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY024.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party024|postaladdress|0|299 michigan st"
+          ],
+          "unexpectedRows": [
+            "party024|postaladdress|0|304 wacker st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust024|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust024|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust024|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY025.json",
+      "partyId": "PARTY025",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY025.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust025|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust025|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust025|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY026.json",
+      "partyId": "PARTY026",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY026.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust026|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY027.json",
+      "partyId": "PARTY027",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY027.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust027|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust027|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust027|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY028.json",
+      "partyId": "PARTY028",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY028.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust028|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust028|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust028|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY029.json",
+      "partyId": "PARTY029",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY029.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust029|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY030.json",
+      "partyId": "PARTY030",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY030.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust030|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY031.json",
+      "partyId": "PARTY031",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY031.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust031|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust031|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust031|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY032.json",
+      "partyId": "PARTY032",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY032.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party032|postaladdress|0|388 main st"
+          ],
+          "unexpectedRows": [
+            "party032|postaladdress|0|393 main st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust032|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY033.json",
+      "partyId": "PARTY033",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY033.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party033|postaladdress|0|412 state st"
+          ],
+          "unexpectedRows": [
+            "party033|postaladdress|0|417 state st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust033|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY034.json",
+      "partyId": "PARTY034",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY034.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party034|postaladdress|0|423 state st"
+          ],
+          "unexpectedRows": [
+            "party034|postaladdress|0|428 michigan st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust034|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust034|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust034|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY035.json",
+      "partyId": "PARTY035",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY035.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust035|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY036.json",
+      "partyId": "PARTY036",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY036.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust036|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust036|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust036|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY037.json",
+      "partyId": "PARTY037",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY037.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust037|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY038.json",
+      "partyId": "PARTY038",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY038.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust038|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust038|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust038|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY039.json",
+      "partyId": "PARTY039",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY039.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust039|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY040.json",
+      "partyId": "PARTY040",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY040.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust040|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust040|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust040|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY041.json",
+      "partyId": "PARTY041",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY041.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust041|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY042.json",
+      "partyId": "PARTY042",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY042.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust042|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust042|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust042|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY043.json",
+      "partyId": "PARTY043",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY043.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust043|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust043|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust043|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY044.json",
+      "partyId": "PARTY044",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY044.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust044|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY045.json",
+      "partyId": "PARTY045",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY045.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust045|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY046.json",
+      "partyId": "PARTY046",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY046.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party046|postaladdress|0|536 state st"
+          ],
+          "unexpectedRows": [
+            "party046|postaladdress|0|541 state st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust046|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust046|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust046|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY047.json",
+      "partyId": "PARTY047",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY047.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust047|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust047|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust047|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY048.json",
+      "partyId": "PARTY048",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY048.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust048|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY049.json",
+      "partyId": "PARTY049",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY049.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust049|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY050.json",
+      "partyId": "PARTY050",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY050.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust050|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY051.json",
+      "partyId": "PARTY051",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY051.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party051|postaladdress|0|582 clark st"
+          ],
+          "unexpectedRows": [
+            "party051|postaladdress|0|587 michigan st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust051|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY052.json",
+      "partyId": "PARTY052",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY052.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust052|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY053.json",
+      "partyId": "PARTY053",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY053.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust053|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY054.json",
+      "partyId": "PARTY054",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY054.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party054|postaladdress|0|613 michigan st"
+          ],
+          "unexpectedRows": [
+            "party054|postaladdress|0|618 state st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust054|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust054|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust054|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY055.json",
+      "partyId": "PARTY055",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY055.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust055|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust055|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust055|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY056.json",
+      "partyId": "PARTY056",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY056.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust056|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY057.json",
+      "partyId": "PARTY057",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY057.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust057|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust057|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust057|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY058.json",
+      "partyId": "PARTY058",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY058.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust058|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust058|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust058|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY059.json",
+      "partyId": "PARTY059",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY059.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust059|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY060.json",
+      "partyId": "PARTY060",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY060.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust060|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY061.json",
+      "partyId": "PARTY061",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY061.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust061|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust061|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust061|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY062.json",
+      "partyId": "PARTY062",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY062.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust062|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY063.json",
+      "partyId": "PARTY063",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY063.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust063|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY064.json",
+      "partyId": "PARTY064",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY064.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party064|postaladdress|0|715 michigan st"
+          ],
+          "unexpectedRows": [
+            "party064|postaladdress|0|720 state st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust064|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust064|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust064|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY065.json",
+      "partyId": "PARTY065",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY065.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust065|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY066.json",
+      "partyId": "PARTY066",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY066.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party066|postaladdress|0|730 state st"
+          ],
+          "unexpectedRows": [
+            "party066|postaladdress|0|735 main st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust066|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust066|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust066|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY067.json",
+      "partyId": "PARTY067",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY067.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust067|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust067|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust067|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY068.json",
+      "partyId": "PARTY068",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY068.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party068|postaladdress|0|753 clark st"
+          ],
+          "unexpectedRows": [
+            "party068|postaladdress|0|758 lake st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust068|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust068|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust068|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY069.json",
+      "partyId": "PARTY069",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY069.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust069|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY070.json",
+      "partyId": "PARTY070",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY070.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust070|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY071.json",
+      "partyId": "PARTY071",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY071.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_BILL_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "cust_acct_id",
+            "bill_acct_id",
+            "rel_type"
+          ],
+          "missingRows": [
+            "ca_cust071|ba177|billto",
+            "ca_cust071|ba178|billto",
+            "ca_cust071|ba179|billto"
+          ],
+          "unexpectedRows": [
+            "cust071|ba177|billto",
+            "cust071|ba178|billto",
+            "cust071|ba179|billto"
+          ],
+          "missingRowCount": 3,
+          "unexpectedRowCount": 3
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 3,
+          "projectedColumns": [
+            "bill_acct_id",
+            "state",
+            "currency",
+            "bill_cycle",
+            "credit_class"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "ba178|active|usd|14|<NULL>",
+            "ba179|active|usd|20|<NULL>"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust071|flag.auto_pay|y|ncc_eligibility_flag",
+            "ca_cust071|flag.data_cap|y|ncc_eligibility_flag",
+            "ca_cust071|flag.prepaid|y|ncc_eligibility_flag",
+            "ca_cust071|lastinteractionoutcome|escalated, resolved, offer_presented, escalated, follow_up, resolved|sbl_interaction",
+            "ca_cust071|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust071|flag.auto_pay.2025-06-17|y|ncc_eligibility_flag",
+            "ca_cust071|flag.data_cap.2025-06-02|y|ncc_eligibility_flag",
+            "ca_cust071|flag.prepaid.2025-06-13|y|ncc_eligibility_flag",
+            "ca_cust071|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 5,
+          "unexpectedRowCount": 4
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY072.json",
+      "partyId": "PARTY072",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY072.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust072|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY073.json",
+      "partyId": "PARTY073",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY073.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust073|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust073|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust073|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY074.json",
+      "partyId": "PARTY074",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY074.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party074|postaladdress|0|796 lake st"
+          ],
+          "unexpectedRows": [
+            "party074|postaladdress|0|801 michigan st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust074|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY075.json",
+      "partyId": "PARTY075",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY075.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust075|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust075|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust075|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY076.json",
+      "partyId": "PARTY076",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY076.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust076|churnscore|0|sbl_churn_score",
+            "ca_cust076|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust076|churnscore|0.0|sbl_churn_score"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY077.json",
+      "partyId": "PARTY077",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY077.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust077|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust077|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust077|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY078.json",
+      "partyId": "PARTY078",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY078.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust078|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY079.json",
+      "partyId": "PARTY079",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY079.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust079|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY080.json",
+      "partyId": "PARTY080",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY080.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PRODUCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_BILL_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 5,
+          "actualCount": 5,
+          "projectedColumns": [
+            "cust_acct_id",
+            "bill_acct_id",
+            "rel_type"
+          ],
+          "missingRows": [
+            "ca_cust080|ba200|billto",
+            "ca_cust080|ba201|billto",
+            "ca_cust080|ba202|billto",
+            "ca_cust080|ba203|billto",
+            "ca_cust080|ba204|billto"
+          ],
+          "unexpectedRows": [
+            "cust080|ba200|billto",
+            "cust080|ba201|billto",
+            "cust080|ba202|billto",
+            "cust080|ba203|billto",
+            "cust080|ba204|billto"
+          ],
+          "missingRowCount": 5,
+          "unexpectedRowCount": 5
+        },
+        {
+          "table": "TC_PTY_EXT_REF",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_PROD_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BILL_ACCT",
+          "reason": "row_set_mismatch",
+          "expectedCount": 1,
+          "actualCount": 5,
+          "projectedColumns": [
+            "bill_acct_id",
+            "state",
+            "currency",
+            "bill_cycle",
+            "credit_class"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "ba201|active|usd|22|<NULL>",
+            "ba202|active|usd|1|<NULL>",
+            "ba203|active|usd|4|<NULL>",
+            "ba204|active|usd|23|<NULL>"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 4
+        },
+        {
+          "table": "TC_CA_PROD_MAP",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust080|flag.fraud_watch|y|ncc_eligibility_flag",
+            "ca_cust080|flag.loyalty|y|ncc_eligibility_flag",
+            "ca_cust080|flag.vip|y|ncc_eligibility_flag",
+            "ca_cust080|lastinteractionoutcome|escalated, follow_up, resolved, resolved|sbl_interaction",
+            "ca_cust080|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust080|flag.fraud_watch.2025-06-16|y|ncc_eligibility_flag",
+            "ca_cust080|flag.loyalty.2025-06-03|y|ncc_eligibility_flag",
+            "ca_cust080|flag.vip.2025-06-14|y|ncc_eligibility_flag",
+            "ca_cust080|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 5,
+          "unexpectedRowCount": 4
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY081.json",
+      "partyId": "PARTY081",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY081.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party081|postaladdress|0|879 wacker st"
+          ],
+          "unexpectedRows": [
+            "party081|postaladdress|0|884 lake st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust081|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust081|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust081|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY082.json",
+      "partyId": "PARTY082",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY082.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust082|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust082|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust082|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY083.json",
+      "partyId": "PARTY083",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY083.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust083|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust083|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust083|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY084.json",
+      "partyId": "PARTY084",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY084.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust084|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY085.json",
+      "partyId": "PARTY085",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY085.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 13,
+          "actualCount": 12,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust085|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust085|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust085|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY086.json",
+      "partyId": "PARTY086",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY086.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust086|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY087.json",
+      "partyId": "PARTY087",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY087.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party087|postaladdress|0|943 wacker st"
+          ],
+          "unexpectedRows": [
+            "party087|postaladdress|0|948 state st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust087|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust087|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust087|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY088.json",
+      "partyId": "PARTY088",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY088.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party088|postaladdress|0|955 clark st"
+          ],
+          "unexpectedRows": [
+            "party088|postaladdress|0|960 main st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust088|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust088|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust088|lastinteractionoutcome|resolved|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY089.json",
+      "partyId": "PARTY089",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY089.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust089|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust089|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust089|lastinteractionoutcome|offer_presented|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY090.json",
+      "partyId": "PARTY090",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY090.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust090|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY091.json",
+      "partyId": "PARTY091",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY091.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 14,
+          "actualCount": 13,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust091|lastinteractionoutcome|escalated|sbl_interaction",
+            "ca_cust091|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust091|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY092.json",
+      "partyId": "PARTY092",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY092.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust092|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY093.json",
+      "partyId": "PARTY093",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY093.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust093|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust093|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust093|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY094.json",
+      "partyId": "PARTY094",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY094.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_PTY_CNT_MED",
+          "reason": "row_set_mismatch",
+          "expectedCount": 3,
+          "actualCount": 3,
+          "projectedColumns": [
+            "party_id",
+            "medium_type",
+            "preferred_flag",
+            "characteristic_json"
+          ],
+          "missingRows": [
+            "party094|postaladdress|0|988 wacker st"
+          ],
+          "unexpectedRows": [
+            "party094|postaladdress|0|993 main st"
+          ],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust094|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust094|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust094|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY095.json",
+      "partyId": "PARTY095",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY095.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 12,
+          "actualCount": 11,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust095|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY096.json",
+      "partyId": "PARTY096",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY096.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust096|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [],
+          "missingRowCount": 1,
+          "unexpectedRowCount": 0
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY097.json",
+      "partyId": "PARTY097",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY097.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust097|lastinteractionoutcome|resolved|sbl_interaction",
+            "ca_cust097|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust097|lastinteractionoutcome|follow_up|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY098.json",
+      "partyId": "PARTY098",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY098.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 15,
+          "actualCount": 14,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust098|lastinteractionoutcome|follow_up|sbl_interaction",
+            "ca_cust098|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust098|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tests/golden/targets/response_PARTY099.json",
+      "partyId": "PARTY099",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/data/TC_PARTY_PARTY099.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "TC_BA_BAL",
+          "reason": "row_set_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "TC_CA_CHAR",
+          "reason": "row_set_mismatch",
+          "expectedCount": 16,
+          "actualCount": 15,
+          "projectedColumns": [
+            "cust_acct_id",
+            "name",
+            "value",
+            "value_type"
+          ],
+          "missingRows": [
+            "ca_cust099|lastinteractionoutcome|offer_presented|sbl_interaction",
+            "ca_cust099|pastdueamount|null|ncc_offer_qual_request"
+          ],
+          "unexpectedRows": [
+            "ca_cust099|lastinteractionoutcome|escalated|sbl_interaction"
+          ],
+          "missingRowCount": 2,
+          "unexpectedRowCount": 1
+        }
+      ]
+    }
+  ]
+}

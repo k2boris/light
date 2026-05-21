@@ -1,0 +1,346 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          party_id:
+            external: party_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        height: 199
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ ROWID_OBJECT: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/party_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      XRefBridge:
+        parent: SourceDbQuery
+        height: 258
+        in:
+          interface:
+            const: MDM_INFA_DS
+          sql:
+            const: 'SELECT SOURCE_KEY AS party_id FROM main.C_XREF_PARTY WHERE SYSTEM_CODE = ''SFDC'''
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 2:
+    actors:
+      QueryJoin:
+        parent: SourceDbQuery
+        height: 229
+        in:
+          interface:
+            const: CRM_SF_DS
+          sql:
+            const: SELECT * FROM (select * from main.sf_kyc_check) __rowmatch LIMIT 1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: XRefBridge/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      ProjectRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}
+                return '' + v;
+              }
+              self.result = [];
+              self.result.push({
+                kyc_assessment_id: scalar(kyc_check_id),
+                party_id: scalar(parent_party_id),
+                kyc_status: scalar(status_code),
+                risk_rating: scalar(risk_level),
+                risk_score: scalar(score_value),
+                last_reviewed_at: scalar(performed_at),
+                source_record_ref: scalar(raw_result_ref),
+                created_at: scalar(created_at),
+                updated_at: scalar(updated_at),
+                pep_flag: "0",
+                sanctions_flag: "0",
+                adverse_media_flag: "0",
+                assessment_reason: "ONBOARDING"
+              });
+              self.result;
+          parent_party_id:
+            link: PopulationArgs/parent_rows/party_id
+            schema: string
+            mandatory: false
+          kyc_check_id:
+            link:
+              path: QueryJoin/result/kyc_check_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          party_id:
+            link:
+              path: QueryJoin/result/party_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          status_code:
+            link:
+              path: QueryJoin/result/status_code
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          risk_level:
+            link:
+              path: QueryJoin/result/risk_level
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          score_value:
+            link:
+              path: QueryJoin/result/score_value
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          performed_at:
+            link:
+              path: QueryJoin/result/performed_at
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          raw_result_ref:
+            link:
+              path: QueryJoin/result/raw_result_ref
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          created_at:
+            link:
+              path: QueryJoin/result/created_at
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          updated_at:
+            link:
+              path: QueryJoin/result/updated_at
+              iterate: Iterate
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      BI_KYC_ASSESSMENT:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - kyc_assessment_id
+              - party_id
+              - kyc_status
+              - risk_rating
+              - risk_score
+              - last_reviewed_at
+              - source_record_ref
+              - created_at
+              - updated_at
+              - pep_flag
+              - sanctions_flag
+              - adverse_media_flag
+              - assessment_reason
+          keys:
+            const:
+              - kyc_assessment_id
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: ProjectRows/result
+              iterate: Iterate
+          command:
+            const: upsert
+          kyc_assessment_id:
+            link: ProjectRows/result/kyc_assessment_id
+            schema: string
+          party_id:
+            link: ProjectRows/result/party_id
+            schema: string
+          kyc_status:
+            link: ProjectRows/result/kyc_status
+            schema: string
+          risk_rating:
+            link: ProjectRows/result/risk_rating
+            schema: string
+          risk_score:
+            link: ProjectRows/result/risk_score
+            schema: string
+          last_reviewed_at:
+            link: ProjectRows/result/last_reviewed_at
+            schema: string
+          source_record_ref:
+            link: ProjectRows/result/source_record_ref
+            schema: string
+          created_at:
+            link: ProjectRows/result/created_at
+            schema: string
+          updated_at:
+            link: ProjectRows/result/updated_at
+            schema: string
+          pep_flag:
+            link: ProjectRows/result/pep_flag
+            schema: string
+          sanctions_flag:
+            link: ProjectRows/result/sanctions_flag
+            schema: string
+          adverse_media_flag:
+            link: ProjectRows/result/adverse_media_flag
+            schema: string
+          assessment_reason:
+            link: ProjectRows/result/assessment_reason
+            schema: string
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        ROWID_OBJECT:
+          type: string
+  QueryJoin.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        kyc_check_id:
+          type: string
+        party_id:
+          type: string
+        status_code:
+          type: string
+        risk_level:
+          type: string
+        score_value:
+          type: string
+        performed_at:
+          type: string
+        raw_result_ref:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+  ProjectRows.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        kyc_assessment_id:
+          type: string
+        party_id:
+          type: string
+        kyc_status:
+          type: string
+        risk_rating:
+          type: string
+        risk_score:
+          type: string
+        last_reviewed_at:
+          type: string
+        source_record_ref:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        pep_flag:
+          type: string
+        sanctions_flag:
+          type: string
+        adverse_media_flag:
+          type: string
+        assessment_reason:
+          type: string
+  XRefBridge.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TC_PARTY</Name>
+  <ID>tbl_TC_PARTY</ID>
+  <Columns>
+    <Column name="party_id" id="party_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_type" id="party_type" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="status" id="status" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="given_name" id="given_name" index="3" datatype="TEXT"/>
+    <Column name="family_name" id="family_name" index="4" datatype="TEXT"/>
+    <Column name="org_name" id="org_name" index="5" datatype="TEXT"/>
+    <Column name="created_dt" id="created_dt" index="6" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="party_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="TC_PARTY" timestamp="2026-03-04">
+      <ColumnsList>party_id,party_type,status,given_name,family_name,org_name,created_dt</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

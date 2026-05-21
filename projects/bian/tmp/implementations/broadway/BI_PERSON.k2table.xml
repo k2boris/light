@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_PERSON</Name>
+  <ID>tbl_BI_PERSON</ID>
+  <Columns>
+    <Column name="party_id" id="party_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="first_name" id="first_name" index="1" datatype="TEXT"/>
+    <Column name="middle_name" id="middle_name" index="2" datatype="TEXT"/>
+    <Column name="last_name" id="last_name" index="3" datatype="TEXT"/>
+    <Column name="date_of_birth" id="date_of_birth" index="4" datatype="TEXT"/>
+    <Column name="gender_code" id="gender_code" index="5" datatype="TEXT"/>
+    <Column name="citizenship_code" id="citizenship_code" index="6" datatype="TEXT"/>
+    <Column name="residency_country" id="residency_country" index="7" datatype="TEXT"/>
+    <Column name="occupation" id="occupation" index="8" datatype="TEXT"/>
+    <Column name="employer_name" id="employer_name" index="9" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="party_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_PERSON" timestamp="2026-03-04">
+      <ColumnsList>party_id,first_name,middle_name,last_name,date_of_birth,gender_code,citizenship_code,residency_country,occupation,employer_name</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

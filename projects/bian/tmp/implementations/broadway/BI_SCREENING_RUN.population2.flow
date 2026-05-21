@@ -1,0 +1,286 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          party_id:
+            external: party_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        height: 199
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ ROWID_OBJECT: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/party_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      XRefBridge:
+        parent: SourceDbQuery
+        height: 258
+        in:
+          interface:
+            const: MDM_INFA_DS
+          sql:
+            const: 'SELECT SOURCE_KEY AS customer_id FROM main.C_XREF_PARTY WHERE SYSTEM_CODE = ''TEMENOS'''
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 2:
+    actors:
+      QueryJoin:
+        parent: SourceDbQuery
+        height: 229
+        in:
+          interface:
+            const: CORE_TMNS_DS
+          sql:
+            const: |-
+              SELECT DISTINCT
+                  t1.customer_id AS customer_id,
+                  t3.screening_id AS screening_id,
+                  t3.screened_at AS screened_at,
+                  t1.account_id AS account_id
+              FROM account t1
+              JOIN funds_transfer t2 ON t1.account_id = t2.debit_account_id
+              JOIN payment_screening t3 ON t2.ft_id = t3.ft_id
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: XRefBridge/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      ProjectRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}
+                return '' + v;
+              }
+              self.result = [];
+              self.result.push({
+                screening_run_id: scalar(screening_id),
+                party_id: scalar(parent_party_id),
+                run_type: "REALTIME",
+                trigger_reason: "EVENT",
+                started_at: scalar(screened_at),
+                completed_at: scalar(screened_at),
+                status_code: "COMPLETED",
+                source_system_id: "TMNS-core",
+                source_record_ref: scalar(screening_id)
+              });
+              self.result;
+          parent_party_id:
+            link: PopulationArgs/parent_rows/party_id
+            schema: string
+            mandatory: false
+          customer_id:
+            link:
+              path: QueryJoin/result/customer_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          screening_id:
+            link:
+              path: QueryJoin/result/screening_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          screened_at:
+            link:
+              path: QueryJoin/result/screened_at
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          account_id:
+            link:
+              path: QueryJoin/result/account_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      BI_SCREENING_RUN:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - screening_run_id
+              - party_id
+              - run_type
+              - trigger_reason
+              - started_at
+              - completed_at
+              - status_code
+              - source_system_id
+              - source_record_ref
+          keys:
+            const:
+              - screening_run_id
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: ProjectRows/result
+              iterate: Iterate
+          command:
+            const: upsert
+          screening_run_id:
+            link: ProjectRows/result/screening_run_id
+            schema: string
+          party_id:
+            link: ProjectRows/result/party_id
+            schema: string
+          run_type:
+            link: ProjectRows/result/run_type
+            schema: string
+          trigger_reason:
+            link: ProjectRows/result/trigger_reason
+            schema: string
+          started_at:
+            link: ProjectRows/result/started_at
+            schema: string
+          completed_at:
+            link: ProjectRows/result/completed_at
+            schema: string
+          status_code:
+            link: ProjectRows/result/status_code
+            schema: string
+          source_system_id:
+            link: ProjectRows/result/source_system_id
+            schema: string
+          source_record_ref:
+            link: ProjectRows/result/source_record_ref
+            schema: string
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        ROWID_OBJECT:
+          type: string
+  QueryJoin.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        screening_id:
+          type: string
+        screened_at:
+          type: string
+        account_id:
+          type: string
+  ProjectRows.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        screening_run_id:
+          type: string
+        party_id:
+          type: string
+        run_type:
+          type: string
+        trigger_reason:
+          type: string
+        started_at:
+          type: string
+        completed_at:
+          type: string
+        status_code:
+          type: string
+        source_system_id:
+          type: string
+        source_record_ref:
+          type: string
+  XRefBridge.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string

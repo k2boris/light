@@ -1,0 +1,5201 @@
+{
+  "meta": {
+    "generated_at": "2026-03-04T15:49:37.613736Z",
+    "strict": true,
+    "canonical_schema": "CANONICAL",
+    "source_systems": [
+      "BSCS_SYSTEM",
+      "NCC_SYSTEM",
+      "SIEBEL_SYSTEM"
+    ],
+    "validation": {
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "ir": {
+    "plans": [
+      {
+        "plan_id": "TC_CA_CHAR__BSCS__BSCS_CUSTOMER",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CA_CHAR",
+          "keys": [
+            "cust_acct_id",
+            "name",
+            "value"
+          ]
+        },
+        "source": {
+          "system": "BSCS_SYSTEM",
+          "table": "BSCS_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_CA_CHAR",
+          "source_entity": "BSCS_SYSTEM.BSCS_CUSTOMER",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "eav_rows": null,
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": "credit_class",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "BSCS_CUSTOMER"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "creditClass"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "BSCS_SYSTEM.BSCS_CUSTOMER.credit_class"
+                }
+              }
+            },
+            {
+              "row_id": "EAV_2",
+              "emit_when": "risk_flag",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "BSCS_CUSTOMER"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "billingRiskFlag"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "BSCS_SYSTEM.BSCS_CUSTOMER.risk_flag"
+                }
+              }
+            }
+          ],
+          "source_interface": "BSCS_SYSTEM",
+          "source_system": "BSCS_SYSTEM",
+          "source_table": "BSCS_CUSTOMER",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "BSCS_SYSTEM.BSCS_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": "credit_class",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "BSCS_CUSTOMER"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "creditClass"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "BSCS_SYSTEM.BSCS_CUSTOMER.credit_class"
+                    }
+                  }
+                },
+                {
+                  "row_id": "EAV_2",
+                  "emit_when": "risk_flag",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "BSCS_CUSTOMER"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "billingRiskFlag"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "BSCS_SYSTEM.BSCS_CUSTOMER.risk_flag"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_CA_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id",
+                "name",
+                "value"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "BSCS_SYSTEM.BSCS_CUSTOMER",
+          "target_table": "TC_CA_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__NCC__NCC_ELIGIBILITY_FLAG",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CA_CHAR",
+          "keys": [
+            "cust_acct_id",
+            "name",
+            "value"
+          ]
+        },
+        "source": {
+          "system": "NCC_SYSTEM",
+          "table": "NCC_ELIGIBILITY_FLAG"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_CA_CHAR",
+          "source_entity": "NCC_SYSTEM.NCC_ELIGIBILITY_FLAG",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "eav_rows": null,
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": "flag_value",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "NCC_ELIGIBILITY_FLAG"
+                },
+                "name": {
+                  "op": "EXPR",
+                  "expr": "'flag.' + flag_code + '.' + effective_dt"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "NCC_SYSTEM.NCC_ELIGIBILITY_FLAG.flag_value"
+                }
+              }
+            }
+          ],
+          "source_interface": "NCC_SYSTEM",
+          "source_system": "NCC_SYSTEM",
+          "source_table": "NCC_ELIGIBILITY_FLAG",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "NCC_SYSTEM.NCC_ELIGIBILITY_FLAG"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": "flag_value",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "NCC_ELIGIBILITY_FLAG"
+                    },
+                    "name": {
+                      "op": "EXPR",
+                      "expr": "'flag.' + flag_code + '.' + effective_dt"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "NCC_SYSTEM.NCC_ELIGIBILITY_FLAG.flag_value"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_CA_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id",
+                "name",
+                "value"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "NCC_SYSTEM.NCC_ELIGIBILITY_FLAG",
+          "target_table": "TC_CA_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__NCC__NCC_OFFER_QUAL_REQUEST",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CA_CHAR",
+          "keys": [
+            "cust_acct_id",
+            "name",
+            "value"
+          ]
+        },
+        "source": {
+          "system": "NCC_SYSTEM",
+          "table": "NCC_OFFER_QUAL_REQUEST"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_CA_CHAR",
+          "source_entity": "NCC_SYSTEM.NCC_OFFER_QUAL_REQUEST",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "eav_rows": null,
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": "past_due_amount",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "NCC_OFFER_QUAL_REQUEST"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "pastDueAmountSnapshot"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "NCC_SYSTEM.NCC_OFFER_QUAL_REQUEST.past_due_amount"
+                }
+              }
+            }
+          ],
+          "source_interface": "NCC_SYSTEM",
+          "source_system": "NCC_SYSTEM",
+          "source_table": "NCC_OFFER_QUAL_REQUEST",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "NCC_SYSTEM.NCC_OFFER_QUAL_REQUEST"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": "past_due_amount",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "NCC_OFFER_QUAL_REQUEST"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "pastDueAmountSnapshot"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "NCC_SYSTEM.NCC_OFFER_QUAL_REQUEST.past_due_amount"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_CA_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id",
+                "name",
+                "value"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "NCC_SYSTEM.NCC_OFFER_QUAL_REQUEST",
+          "target_table": "TC_CA_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_CHURN_SCORE",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CA_CHAR",
+          "keys": [
+            "cust_acct_id",
+            "name",
+            "value"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_CHURN_SCORE"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_CA_CHAR",
+          "source_entity": "SIEBEL_SYSTEM.SBL_CHURN_SCORE",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "eav_rows": null,
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": "churn_score",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "SBL_CHURN_SCORE"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "churnScore"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.churn_score"
+                }
+              }
+            },
+            {
+              "row_id": "EAV_2",
+              "emit_when": "risk_band",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "SBL_CHURN_SCORE"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "riskBand"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.risk_band"
+                }
+              }
+            },
+            {
+              "row_id": "EAV_3",
+              "emit_when": "model_version",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "SBL_CHURN_SCORE"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "churnModelVersion"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.model_version"
+                }
+              }
+            },
+            {
+              "row_id": "EAV_4",
+              "emit_when": "scored_dt",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "SBL_CHURN_SCORE"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "churnScoredDt"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.scored_dt"
+                }
+              }
+            },
+            {
+              "row_id": "EAV_5",
+              "emit_when": "top_driver",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "SBL_CHURN_SCORE"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "topChurnDriver"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.top_driver"
+                }
+              }
+            }
+          ],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_system": "SIEBEL_SYSTEM",
+          "source_table": "SBL_CHURN_SCORE",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_CHURN_SCORE"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": "churn_score",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "SBL_CHURN_SCORE"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "churnScore"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.churn_score"
+                    }
+                  }
+                },
+                {
+                  "row_id": "EAV_2",
+                  "emit_when": "risk_band",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "SBL_CHURN_SCORE"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "riskBand"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.risk_band"
+                    }
+                  }
+                },
+                {
+                  "row_id": "EAV_3",
+                  "emit_when": "model_version",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "SBL_CHURN_SCORE"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "churnModelVersion"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.model_version"
+                    }
+                  }
+                },
+                {
+                  "row_id": "EAV_4",
+                  "emit_when": "scored_dt",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "SBL_CHURN_SCORE"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "churnScoredDt"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.scored_dt"
+                    }
+                  }
+                },
+                {
+                  "row_id": "EAV_5",
+                  "emit_when": "top_driver",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "SBL_CHURN_SCORE"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "topChurnDriver"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.top_driver"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_CA_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id",
+                "name",
+                "value"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_CHURN_SCORE",
+          "target_table": "TC_CA_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CA_CHAR",
+          "keys": [
+            "cust_acct_id",
+            "name",
+            "value"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_CA_CHAR",
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "eav_rows": null,
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": "segment_code",
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "SBL_CUSTOMER"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "segmentCode"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.segment_code"
+                }
+              }
+            }
+          ],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_system": "SIEBEL_SYSTEM",
+          "source_table": "SBL_CUSTOMER",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": "segment_code",
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "SBL_CUSTOMER"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "segmentCode"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.segment_code"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_CA_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id",
+                "name",
+                "value"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "target_table": "TC_CA_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_INTERACTION",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CA_CHAR",
+          "keys": [
+            "cust_acct_id",
+            "name",
+            "value"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_INTERACTION"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_CA_CHAR",
+          "source_entity": "SIEBEL_SYSTEM.SBL_INTERACTION",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "eav_rows": null,
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": null,
+              "fields": {
+                "cust_acct_id": {
+                  "op": "CONTEXT",
+                  "context_key": "cust_acct_id"
+                },
+                "value_type": {
+                  "op": "CONST",
+                  "value": "SBL_INTERACTION"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "lastInteractionOutcome"
+                },
+                "value": {
+                  "op": "EXPR",
+                  "expr": "outcome_code + '|' + end_ts"
+                }
+              }
+            }
+          ],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_system": "SIEBEL_SYSTEM",
+          "source_table": "SBL_INTERACTION",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_INTERACTION"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": null,
+                  "fields": {
+                    "cust_acct_id": {
+                      "op": "CONTEXT",
+                      "context_key": "cust_acct_id"
+                    },
+                    "value_type": {
+                      "op": "CONST",
+                      "value": "SBL_INTERACTION"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "lastInteractionOutcome"
+                    },
+                    "value": {
+                      "op": "EXPR",
+                      "expr": "outcome_code + '|' + end_ts"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_CA_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id",
+                "name",
+                "value"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_INTERACTION",
+          "target_table": "TC_CA_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_CA_PROD_MAP__NCC__JOINED",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CA_PROD_MAP",
+          "keys": [
+            "cust_acct_id",
+            "product_id"
+          ]
+        },
+        "source": {
+          "system": "NCC_SYSTEM",
+          "table": "NCC_SUBSCRIPTION"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_CA_PROD_MAP",
+          "source_system": "NCC_SYSTEM",
+          "source_table": "NCC_SUBSCRIPTION",
+          "source_interface": "NCC_SYSTEM",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "NCC_SYSTEM.NCC_SUBSCRIPTION"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_context_filter",
+              "mappings": [
+                {
+                  "target_field": "cust_acct_id",
+                  "expr": {
+                    "op": "EXPR",
+                    "expr": "'CA-'||customer_id"
+                  }
+                },
+                {
+                  "target_field": "product_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT.product_id"
+                  }
+                },
+                {
+                  "target_field": "rel_type",
+                  "expr": {
+                    "op": "CONST",
+                    "value": "owns"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_CA_PROD_MAP",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id",
+                "product_id"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "NCC_SYSTEM.NCC_PRODUCT",
+          "target_table": "TC_CA_PROD_MAP"
+        }
+      },
+      {
+        "plan_id": "TC_CUSTOMER__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CUSTOMER",
+          "keys": [
+            "customer_id"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "customer_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "params": {
+          "target_table": "TC_CUSTOMER",
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "driver_key": "customer_id",
+          "sync_delete": true,
+          "assert_max_rows": 1,
+          "project_expressions": {
+            "created_dt": {
+              "op": "NOW"
+            },
+            "customer_id": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.customer_id"
+            },
+            "engaged_party_id": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+            },
+            "status": {
+              "op": "ENUM_MAP",
+              "map": "TC_CUSTOMER.status.map",
+              "input": {
+                "op": "PATH",
+                "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.status"
+              }
+            }
+          },
+          "emit_rows": [],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_table": "SBL_CUSTOMER",
+          "source_system": "SIEBEL_SYSTEM",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "customer_id",
+              "source_field": "customer_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_assert_cardinality",
+            "kind": "AssertCardinality",
+            "params": {
+              "input": "op_context_filter",
+              "max_rows": 1,
+              "scope": "per_driver"
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_assert_cardinality",
+              "mappings": [
+                {
+                  "target_field": "created_dt",
+                  "expr": {
+                    "op": "NOW"
+                  }
+                },
+                {
+                  "target_field": "customer_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.customer_id"
+                  }
+                },
+                {
+                  "target_field": "engaged_party_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                  }
+                },
+                {
+                  "target_field": "status",
+                  "expr": {
+                    "op": "ENUM_MAP",
+                    "map": "TC_CUSTOMER.status.map",
+                    "input": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.status"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_CUSTOMER",
+              "mode": "UPSERT",
+              "keys": [
+                "customer_id"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "target_table": "TC_CUSTOMER"
+        }
+      },
+      {
+        "plan_id": "TC_CUST_ACCT__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_CUST_ACCT",
+          "keys": [
+            "cust_acct_id"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "cust_acct_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "params": {
+          "target_table": "TC_CUST_ACCT",
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "driver_key": "cust_acct_id",
+          "sync_delete": true,
+          "assert_max_rows": 1,
+          "project_expressions": {
+            "account_type": {
+              "op": "CONST",
+              "value": "consumer"
+            },
+            "created_dt": {
+              "op": "NOW"
+            },
+            "cust_acct_id": {
+              "op": "EXPR",
+              "expr": "'CA_' || customer_id"
+            },
+            "customer_id": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.customer_id"
+            },
+            "status": {
+              "op": "ENUM_MAP",
+              "map": "TC_CUST_ACCT.status.map",
+              "input": {
+                "op": "PATH",
+                "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.status"
+              }
+            }
+          },
+          "emit_rows": [],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_table": "SBL_CUSTOMER",
+          "source_system": "SIEBEL_SYSTEM",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "cust_acct_id",
+              "source_field": "cust_acct_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_assert_cardinality",
+            "kind": "AssertCardinality",
+            "params": {
+              "input": "op_context_filter",
+              "max_rows": 1,
+              "scope": "per_driver"
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_assert_cardinality",
+              "mappings": [
+                {
+                  "target_field": "account_type",
+                  "expr": {
+                    "op": "CONST",
+                    "value": "consumer"
+                  }
+                },
+                {
+                  "target_field": "created_dt",
+                  "expr": {
+                    "op": "NOW"
+                  }
+                },
+                {
+                  "target_field": "cust_acct_id",
+                  "expr": {
+                    "op": "EXPR",
+                    "expr": "'CA_' || customer_id"
+                  }
+                },
+                {
+                  "target_field": "customer_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.customer_id"
+                  }
+                },
+                {
+                  "target_field": "status",
+                  "expr": {
+                    "op": "ENUM_MAP",
+                    "map": "TC_CUST_ACCT.status.map",
+                    "input": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.status"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_CUST_ACCT",
+              "mode": "UPSERT",
+              "keys": [
+                "cust_acct_id"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "target_table": "TC_CUST_ACCT"
+        }
+      },
+      {
+        "plan_id": "TC_PARTY__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PARTY",
+          "keys": [
+            "party_id"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "party_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "params": {
+          "target_table": "TC_PARTY",
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "driver_key": "party_id",
+          "sync_delete": true,
+          "assert_max_rows": 1,
+          "project_expressions": {
+            "created_dt": {
+              "op": "NOW"
+            },
+            "family_name": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.last_name"
+            },
+            "given_name": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.first_name"
+            },
+            "org_name": {
+              "op": "CONST",
+              "value": "NULL for Individuals"
+            },
+            "party_id": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+            },
+            "party_type": {
+              "op": "CONST",
+              "value": "Individual"
+            },
+            "status": {
+              "op": "ENUM_MAP",
+              "map": "TC_PARTY.status.map",
+              "input": {
+                "op": "PATH",
+                "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.status"
+              }
+            }
+          },
+          "emit_rows": [],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_table": "SBL_CUSTOMER",
+          "source_system": "SIEBEL_SYSTEM",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "party_id",
+              "source_field": "party_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_assert_cardinality",
+            "kind": "AssertCardinality",
+            "params": {
+              "input": "op_context_filter",
+              "max_rows": 1,
+              "scope": "per_driver"
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_assert_cardinality",
+              "mappings": [
+                {
+                  "target_field": "created_dt",
+                  "expr": {
+                    "op": "NOW"
+                  }
+                },
+                {
+                  "target_field": "family_name",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.last_name"
+                  }
+                },
+                {
+                  "target_field": "given_name",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.first_name"
+                  }
+                },
+                {
+                  "target_field": "org_name",
+                  "expr": {
+                    "op": "CONST",
+                    "value": "NULL for Individuals"
+                  }
+                },
+                {
+                  "target_field": "party_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                  }
+                },
+                {
+                  "target_field": "party_type",
+                  "expr": {
+                    "op": "CONST",
+                    "value": "Individual"
+                  }
+                },
+                {
+                  "target_field": "status",
+                  "expr": {
+                    "op": "ENUM_MAP",
+                    "map": "TC_PARTY.status.map",
+                    "input": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.status"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_PARTY",
+              "mode": "UPSERT",
+              "keys": [
+                "party_id"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "target_table": "TC_PARTY"
+        }
+      },
+      {
+        "plan_id": "TC_PRODUCT__NCC__NCC_PRODUCT",
+        "template_id": "TPL_ARRAY_INPUT_TO_COLUMNS_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PRODUCT",
+          "keys": [
+            "product_id",
+            "start_date"
+          ]
+        },
+        "source": {
+          "system": "NCC_SYSTEM",
+          "table": "NCC_PRODUCT"
+        },
+        "contract": {
+          "driver_key": "product_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "source_interface": "NCC_SYSTEM",
+          "source_system": "NCC_SYSTEM",
+          "source_table": "NCC_PRODUCT",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "target_table": "TC_PRODUCT",
+          "driver_key": "product_id",
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "NCC_SYSTEM.NCC_PRODUCT"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "product_id",
+              "source_field": "product_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_context_filter",
+              "mappings": [
+                {
+                  "target_field": "created_dt",
+                  "expr": {
+                    "op": "NOW"
+                  }
+                },
+                {
+                  "target_field": "product_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT.product_id"
+                  }
+                },
+                {
+                  "target_field": "product_offering_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT.offering_id"
+                  }
+                },
+                {
+                  "target_field": "start_date",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT.start_dt"
+                  }
+                },
+                {
+                  "target_field": "status",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT.status"
+                  }
+                },
+                {
+                  "target_field": "termination_date",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT.end_dt"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_PRODUCT",
+              "mode": "UPSERT",
+              "keys": [
+                "product_id",
+                "start_date"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "NCC_SYSTEM.NCC_PRODUCT",
+          "target_table": "TC_PRODUCT"
+        }
+      },
+      {
+        "plan_id": "TC_PRODUCT__Siebel__SBL_ASSET",
+        "template_id": "TPL_ARRAY_INPUT_TO_COLUMNS_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PRODUCT",
+          "keys": [
+            "product_id",
+            "start_date"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_ASSET"
+        },
+        "contract": {
+          "driver_key": "product_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_system": "SIEBEL_SYSTEM",
+          "source_table": "SBL_ASSET",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "target_table": "TC_PRODUCT",
+          "driver_key": "product_id",
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_ASSET"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "product_id",
+              "source_field": "product_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_context_filter",
+              "mappings": [
+                {
+                  "target_field": "created_dt",
+                  "expr": {
+                    "op": "NOW"
+                  }
+                },
+                {
+                  "target_field": "product_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_ASSET.product_id"
+                  }
+                },
+                {
+                  "target_field": "product_offering_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_ASSET.offering_id"
+                  }
+                },
+                {
+                  "target_field": "start_date",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_ASSET.start_dt"
+                  }
+                },
+                {
+                  "target_field": "status",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_ASSET.status"
+                  }
+                },
+                {
+                  "target_field": "termination_date",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_ASSET.contract_end_dt"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_PRODUCT",
+              "mode": "UPSERT",
+              "keys": [
+                "product_id",
+                "start_date"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_ASSET",
+          "target_table": "TC_PRODUCT"
+        }
+      },
+      {
+        "plan_id": "TC_PROD_CHAR__NCC__NCC_COMMITMENT",
+        "template_id": "TPL_ARRAY_INPUT_TO_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PROD_CHAR",
+          "keys": [
+            "product_id",
+            "name",
+            "value_type"
+          ]
+        },
+        "source": {
+          "system": "NCC_SYSTEM",
+          "table": "NCC_COMMITMENT"
+        },
+        "contract": {
+          "driver_key": "product_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": "product_id",
+              "fields": {
+                "product_id": {
+                  "op": "CONTEXT",
+                  "context_key": "product_id"
+                },
+                "value_type": {
+                  "op": "EXPR",
+                  "expr": "(commitment_type) + ':' + start_dt"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "commitmentEndDt"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "NCC_SYSTEM.NCC_COMMITMENT.end_dt"
+                }
+              }
+            },
+            {
+              "row_id": "EAV_2",
+              "emit_when": "product_id",
+              "fields": {
+                "product_id": {
+                  "op": "CONTEXT",
+                  "context_key": "product_id"
+                },
+                "value_type": {
+                  "op": "EXPR",
+                  "expr": "(commitment_type) + ':' + start_dt"
+                },
+                "name": {
+                  "op": "CONST",
+                  "value": "earlyTermFeeUsd"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "NCC_SYSTEM.NCC_COMMITMENT.early_term_fee_usd"
+                }
+              }
+            }
+          ],
+          "source_interface": "NCC_SYSTEM",
+          "source_system": "NCC_SYSTEM",
+          "source_table": "NCC_COMMITMENT",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "target_table": "TC_PROD_CHAR",
+          "driver_key": "product_id",
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "NCC_SYSTEM.NCC_COMMITMENT"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "product_id",
+              "source_field": "product_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": "product_id",
+                  "fields": {
+                    "product_id": {
+                      "op": "CONTEXT",
+                      "context_key": "product_id"
+                    },
+                    "value_type": {
+                      "op": "EXPR",
+                      "expr": "(commitment_type) + ':' + start_dt"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "commitmentEndDt"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "NCC_SYSTEM.NCC_COMMITMENT.end_dt"
+                    }
+                  }
+                },
+                {
+                  "row_id": "EAV_2",
+                  "emit_when": "product_id",
+                  "fields": {
+                    "product_id": {
+                      "op": "CONTEXT",
+                      "context_key": "product_id"
+                    },
+                    "value_type": {
+                      "op": "EXPR",
+                      "expr": "(commitment_type) + ':' + start_dt"
+                    },
+                    "name": {
+                      "op": "CONST",
+                      "value": "earlyTermFeeUsd"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "NCC_SYSTEM.NCC_COMMITMENT.early_term_fee_usd"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_PROD_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "product_id",
+                "name",
+                "value_type"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "NCC_SYSTEM.NCC_COMMITMENT",
+          "target_table": "TC_PROD_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_PROD_CHAR__NCC__NCC_PRODUCT_PARAM_VALUE",
+        "template_id": "TPL_ARRAY_INPUT_TO_EAV_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PROD_CHAR",
+          "keys": [
+            "product_id",
+            "name",
+            "value_type"
+          ]
+        },
+        "source": {
+          "system": "NCC_SYSTEM",
+          "table": "NCC_PRODUCT_PARAM_VALUE"
+        },
+        "contract": {
+          "driver_key": "product_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "emit_rows": [
+            {
+              "row_id": "EAV_1",
+              "emit_when": "product_id",
+              "fields": {
+                "product_id": {
+                  "op": "CONTEXT",
+                  "context_key": "product_id"
+                },
+                "value_type": {
+                  "op": "EXPR",
+                  "expr": "'product_characteristic:' +  now()"
+                },
+                "name": {
+                  "op": "EXPR",
+                  "expr": "param_name"
+                },
+                "value": {
+                  "op": "PATH",
+                  "path": "NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE.param_value"
+                }
+              }
+            }
+          ],
+          "source_interface": "NCC_SYSTEM",
+          "source_system": "NCC_SYSTEM",
+          "source_table": "NCC_PRODUCT_PARAM_VALUE",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "target_table": "TC_PROD_CHAR",
+          "driver_key": "product_id",
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "product_id",
+              "source_field": "product_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "EAV_1",
+                  "emit_when": "product_id",
+                  "fields": {
+                    "product_id": {
+                      "op": "CONTEXT",
+                      "context_key": "product_id"
+                    },
+                    "value_type": {
+                      "op": "EXPR",
+                      "expr": "'product_characteristic:' +  now()"
+                    },
+                    "name": {
+                      "op": "EXPR",
+                      "expr": "param_name"
+                    },
+                    "value": {
+                      "op": "PATH",
+                      "path": "NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE.param_value"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_PROD_CHAR",
+              "mode": "UPSERT",
+              "keys": [
+                "product_id",
+                "name",
+                "value_type"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE",
+          "target_table": "TC_PROD_CHAR"
+        }
+      },
+      {
+        "plan_id": "TC_PTY_CNT_MED__BSCS__JOINED",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PTY_CNT_MED",
+          "keys": [
+            "party_id",
+            "medium_type",
+            "characteristic_json"
+          ]
+        },
+        "source": {
+          "system": "BSCS_SYSTEM",
+          "table": "BSCS_BILLING_ACCOUNT"
+        },
+        "contract": {
+          "driver_key": "party_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_PTY_CNT_MED",
+          "source_system": "BSCS_SYSTEM",
+          "source_table": "BSCS_BILLING_ACCOUNT",
+          "source_interface": "BSCS_SYSTEM",
+          "driver_key": "party_id",
+          "sync_delete": true,
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "BSCS_SYSTEM.BSCS_BILLING_ACCOUNT"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "party_id",
+              "source_field": "party_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_context_filter",
+              "mappings": [
+                {
+                  "target_field": "characteristic_json",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_ADDRESS.line1"
+                  }
+                },
+                {
+                  "target_field": "medium_type",
+                  "expr": {
+                    "op": "CONST",
+                    "value": "postalAddress"
+                  }
+                },
+                {
+                  "target_field": "party_id",
+                  "expr": {
+                    "op": "EXPR",
+                    "expr": "party_id"
+                  }
+                },
+                {
+                  "target_field": "preferred_flag",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_ACCOUNT_ADDRESS.is_primary"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_PTY_CNT_MED",
+              "mode": "UPSERT",
+              "keys": [
+                "party_id",
+                "medium_type",
+                "characteristic_json"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "BSCS_SYSTEM.BSCS_BILLING_ACCOUNT",
+          "target_table": "TC_PTY_CNT_MED"
+        }
+      },
+      {
+        "plan_id": "TC_PTY_CNT_MED__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PTY_CNT_MED",
+          "keys": [
+            "party_id",
+            "medium_type",
+            "characteristic_json"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "party_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_PTY_CNT_MED",
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "driver_key": "party_id",
+          "sync_delete": true,
+          "assert_max_rows": 1,
+          "project_expressions": {
+            "characteristic_json": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.msisdn"
+            },
+            "medium_type": {
+              "op": "CONST",
+              "value": "telephoneNumber"
+            },
+            "party_id": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+            },
+            "preferred_flag": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.msisdn"
+            }
+          },
+          "emit_rows": [
+            {
+              "row_id": "EMAIL",
+              "emit_when": "party_id && email",
+              "fields": {
+                "party_id": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                },
+                "medium_type": {
+                  "op": "CONST",
+                  "value": "emailAddress"
+                },
+                "preferred_flag": {
+                  "op": "EXPR",
+                  "expr": "(msisdn ? 0 : 1)"
+                },
+                "characteristic_json": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.email"
+                }
+              }
+            },
+            {
+              "row_id": "PHONE",
+              "emit_when": "party_id && msisdn",
+              "fields": {
+                "party_id": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                },
+                "medium_type": {
+                  "op": "CONST",
+                  "value": "telephoneNumber"
+                },
+                "preferred_flag": {
+                  "op": "CONST",
+                  "value": "1"
+                },
+                "characteristic_json": {
+                  "op": "PATH",
+                  "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.msisdn"
+                }
+              }
+            }
+          ],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_table": "SBL_CUSTOMER",
+          "source_system": "SIEBEL_SYSTEM",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "party_id",
+              "source_field": "party_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_assert_cardinality",
+            "kind": "AssertCardinality",
+            "params": {
+              "input": "op_context_filter",
+              "max_rows": 1,
+              "scope": "per_driver"
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_assert_cardinality",
+              "rows": [
+                {
+                  "row_id": "EMAIL",
+                  "emit_when": "party_id && email",
+                  "fields": {
+                    "party_id": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                    },
+                    "medium_type": {
+                      "op": "CONST",
+                      "value": "emailAddress"
+                    },
+                    "preferred_flag": {
+                      "op": "EXPR",
+                      "expr": "(msisdn ? 0 : 1)"
+                    },
+                    "characteristic_json": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.email"
+                    }
+                  }
+                },
+                {
+                  "row_id": "PHONE",
+                  "emit_when": "party_id && msisdn",
+                  "fields": {
+                    "party_id": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                    },
+                    "medium_type": {
+                      "op": "CONST",
+                      "value": "telephoneNumber"
+                    },
+                    "preferred_flag": {
+                      "op": "CONST",
+                      "value": "1"
+                    },
+                    "characteristic_json": {
+                      "op": "PATH",
+                      "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.msisdn"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_PTY_CNT_MED",
+              "mode": "UPSERT",
+              "keys": [
+                "party_id",
+                "medium_type",
+                "characteristic_json"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "target_table": "TC_PTY_CNT_MED"
+        }
+      },
+      {
+        "plan_id": "TC_PTY_EXT_REF__BSCS__BSCS_CUSTOMER",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PTY_EXT_REF",
+          "keys": [
+            "party_id",
+            "external_ref_type",
+            "external_id"
+          ]
+        },
+        "source": {
+          "system": "BSCS_SYSTEM",
+          "table": "BSCS_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "party_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "params": {
+          "target_table": "TC_PTY_EXT_REF",
+          "source_system": "BSCS_SYSTEM",
+          "source_table": "BSCS_CUSTOMER",
+          "source_interface": "BSCS_SYSTEM",
+          "driver_key": "party_id",
+          "sync_delete": true,
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "emit_rows": [
+            {
+              "row_id": "BSCS_CUSTOMER_ID",
+              "emit_when": "customer_id",
+              "fields": {
+                "external_ref_type": {
+                  "op": "CONST",
+                  "value": "BSCS_CUSTOMER_ID"
+                },
+                "external_id": {
+                  "op": "PATH",
+                  "path": "BSCS_SYSTEM.BSCS_CUSTOMER.customer_id"
+                }
+              }
+            },
+            {
+              "row_id": "MSISDN",
+              "emit_when": "msisdn",
+              "fields": {
+                "external_ref_type": {
+                  "op": "CONST",
+                  "value": "MSISDN"
+                },
+                "external_id": {
+                  "op": "PATH",
+                  "path": "BSCS_SYSTEM.BSCS_CUSTOMER.msisdn"
+                }
+              }
+            }
+          ],
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "MULTIPLE"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "BSCS_SYSTEM.BSCS_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "party_id",
+              "source_field": "party_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_emit_rows",
+            "kind": "EmitRows",
+            "params": {
+              "input": "op_context_filter",
+              "rows": [
+                {
+                  "row_id": "BSCS_CUSTOMER_ID",
+                  "emit_when": "customer_id",
+                  "fields": {
+                    "external_ref_type": {
+                      "op": "CONST",
+                      "value": "BSCS_CUSTOMER_ID"
+                    },
+                    "external_id": {
+                      "op": "PATH",
+                      "path": "BSCS_SYSTEM.BSCS_CUSTOMER.customer_id"
+                    }
+                  }
+                },
+                {
+                  "row_id": "MSISDN",
+                  "emit_when": "msisdn",
+                  "fields": {
+                    "external_ref_type": {
+                      "op": "CONST",
+                      "value": "MSISDN"
+                    },
+                    "external_id": {
+                      "op": "PATH",
+                      "path": "BSCS_SYSTEM.BSCS_CUSTOMER.msisdn"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_emit_rows",
+              "target_entity": "TC_PTY_EXT_REF",
+              "mode": "UPSERT",
+              "keys": [
+                "party_id",
+                "external_ref_type",
+                "external_id"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "BSCS_SYSTEM.BSCS_CUSTOMER",
+          "target_table": "TC_PTY_EXT_REF"
+        }
+      },
+      {
+        "plan_id": "TC_PTY_EXT_REF__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "target": {
+          "entity": "TC_PTY_EXT_REF",
+          "keys": [
+            "party_id",
+            "external_ref_type",
+            "external_id"
+          ]
+        },
+        "source": {
+          "system": "SIEBEL_SYSTEM",
+          "table": "SBL_CUSTOMER"
+        },
+        "contract": {
+          "driver_key": "party_id",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "params": {
+          "target_table": "TC_PTY_EXT_REF",
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "driver_key": "party_id",
+          "sync_delete": true,
+          "assert_max_rows": 1,
+          "project_expressions": {
+            "external_id": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.customer_id"
+            },
+            "external_ref_type": {
+              "op": "CONST",
+              "value": "SIEBEL_CUSTOMER_ID"
+            },
+            "party_id": {
+              "op": "PATH",
+              "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+            }
+          },
+          "emit_rows": [],
+          "source_interface": "SIEBEL_SYSTEM",
+          "source_table": "SBL_CUSTOMER",
+          "source_system": "SIEBEL_SYSTEM",
+          "target_interface": "fabric",
+          "target_schema": null,
+          "dialect": "sqlite",
+          "iterate_mode": "Iterate",
+          "row_policy": "SYNC_DELETE",
+          "as_of_policy": "CURRENT",
+          "multiplicity_expectation": "ONE_ONLY"
+        },
+        "operations": [
+          {
+            "op_id": "op_source_read",
+            "kind": "SelectEntity",
+            "params": {
+              "from": "SIEBEL_SYSTEM.SBL_CUSTOMER"
+            }
+          },
+          {
+            "op_id": "op_context_filter",
+            "kind": "ConstrainByContext",
+            "params": {
+              "input": "op_source_read",
+              "context_key": "party_id",
+              "source_field": "party_id",
+              "required": false
+            }
+          },
+          {
+            "op_id": "op_assert_cardinality",
+            "kind": "AssertCardinality",
+            "params": {
+              "input": "op_context_filter",
+              "max_rows": 1,
+              "scope": "per_driver"
+            }
+          },
+          {
+            "op_id": "op_project",
+            "kind": "ProjectAttributes",
+            "params": {
+              "input": "op_assert_cardinality",
+              "mappings": [
+                {
+                  "target_field": "external_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.customer_id"
+                  }
+                },
+                {
+                  "target_field": "external_ref_type",
+                  "expr": {
+                    "op": "CONST",
+                    "value": "SIEBEL_CUSTOMER_ID"
+                  }
+                },
+                {
+                  "target_field": "party_id",
+                  "expr": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "op_id": "op_persist",
+            "kind": "PersistEntity",
+            "params": {
+              "input": "op_project",
+              "target_entity": "TC_PTY_EXT_REF",
+              "mode": "UPSERT",
+              "keys": [
+                "party_id",
+                "external_ref_type",
+                "external_id"
+              ]
+            }
+          }
+        ],
+        "lineage": {
+          "source_entity": "SIEBEL_SYSTEM.SBL_CUSTOMER",
+          "target_table": "TC_PTY_EXT_REF"
+        }
+      }
+    ]
+  },
+  "execution_plans": {
+    "broadway": [
+      {
+        "plan_id": "TC_CA_CHAR__BSCS__BSCS_CUSTOMER",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "multirow_from_columns_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "cust_acct_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": "CA_",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "BSCS_SYSTEM",
+            "system": "BSCS_SYSTEM",
+            "table": "BSCS_CUSTOMER",
+            "sql": "select * from main.BSCS_CUSTOMER",
+            "luid_sql": null,
+            "source_columns": [
+              "credit_class",
+              "risk_flag"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CA_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id",
+              "name",
+              "value"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [],
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "credit_class",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "BSCS_CUSTOMER"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "creditClass"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.credit_class"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_2",
+                "emit_when": "risk_flag",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "BSCS_CUSTOMER"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "billingRiskFlag"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.risk_flag"
+                  }
+                }
+              }
+            ],
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__NCC__NCC_ELIGIBILITY_FLAG",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "multirow_from_columns_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "cust_acct_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": "CA_",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "NCC_SYSTEM",
+            "system": "NCC_SYSTEM",
+            "table": "NCC_ELIGIBILITY_FLAG",
+            "sql": "select * from main.NCC_ELIGIBILITY_FLAG",
+            "luid_sql": null,
+            "source_columns": [
+              "flag_value",
+              "flag_code",
+              "effective_dt"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CA_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id",
+              "name",
+              "value"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [],
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "flag_value",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "NCC_ELIGIBILITY_FLAG"
+                  },
+                  "name": {
+                    "op": "EXPR",
+                    "expr": "'flag.' + flag_code + '.' + effective_dt"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_ELIGIBILITY_FLAG.flag_value"
+                  }
+                }
+              }
+            ],
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__NCC__NCC_OFFER_QUAL_REQUEST",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "multirow_from_columns_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "cust_acct_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": "CA_",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "NCC_SYSTEM",
+            "system": "NCC_SYSTEM",
+            "table": "NCC_OFFER_QUAL_REQUEST",
+            "sql": "select * from main.NCC_OFFER_QUAL_REQUEST",
+            "luid_sql": null,
+            "source_columns": [
+              "past_due_amount"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CA_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id",
+              "name",
+              "value"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [],
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "past_due_amount",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "NCC_OFFER_QUAL_REQUEST"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "pastDueAmountSnapshot"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_OFFER_QUAL_REQUEST.past_due_amount"
+                  }
+                }
+              }
+            ],
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_CHURN_SCORE",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "multirow_from_columns_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "cust_acct_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": "CA_",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_CHURN_SCORE",
+            "sql": "select * from main.SBL_CHURN_SCORE",
+            "luid_sql": null,
+            "source_columns": [
+              "churn_score",
+              "risk_band",
+              "model_version",
+              "scored_dt",
+              "top_driver"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CA_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id",
+              "name",
+              "value"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [],
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "churn_score",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "churnScore"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.churn_score"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_2",
+                "emit_when": "risk_band",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "riskBand"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.risk_band"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_3",
+                "emit_when": "model_version",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "churnModelVersion"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.model_version"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_4",
+                "emit_when": "scored_dt",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "churnScoredDt"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.scored_dt"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_5",
+                "emit_when": "top_driver",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "topChurnDriver"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.top_driver"
+                  }
+                }
+              }
+            ],
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "multirow_from_columns_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "cust_acct_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": "CA_",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_CUSTOMER",
+            "sql": "select * from main.SBL_CUSTOMER",
+            "luid_sql": null,
+            "source_columns": [
+              "segment_code"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CA_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id",
+              "name",
+              "value"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [],
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "segment_code",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CUSTOMER"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "segmentCode"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.segment_code"
+                  }
+                }
+              }
+            ],
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_INTERACTION",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "multirow_from_columns_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "cust_acct_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": "CA_",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_INTERACTION",
+            "sql": "select * from main.SBL_INTERACTION",
+            "luid_sql": null,
+            "source_columns": [
+              "outcome_code",
+              "end_ts"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CA_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id",
+              "name",
+              "value"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [],
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": null,
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_INTERACTION"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "lastInteractionOutcome"
+                  },
+                  "value": {
+                    "op": "EXPR",
+                    "expr": "outcome_code + '|' + end_ts"
+                  }
+                }
+              }
+            ],
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_PROD_MAP__NCC__JOINED",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "spec": {
+          "profile": "join_to_1_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "cust_acct_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": "CA_",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "NCC_SYSTEM",
+            "system": "NCC_SYSTEM",
+            "table": "NCC_SUBSCRIPTION",
+            "sql": "select * from main.NCC_SUBSCRIPTION",
+            "luid_sql": null,
+            "source_columns": [
+              "customer_id",
+              "product_id"
+            ]
+          },
+          "bridge": {
+            "enabled": false,
+            "interface": "NCC_SYSTEM",
+            "sql": null,
+            "bridge_input": "cust_acct_id"
+          },
+          "join_query": {
+            "interface": "NCC_SYSTEM",
+            "sql": "SELECT DISTINCT\n    t1.customer_id AS customer_id,\n    t2.product_id AS product_id\nFROM NCC_SUBSCRIPTION t1\nJOIN NCC_PRODUCT t2 ON t1.subscription_id = t2.subscription_id",
+            "source_columns": [
+              "customer_id",
+              "product_id"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CA_PROD_MAP",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id",
+              "product_id"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "cust_acct_id",
+                "join_key": null,
+                "value_semantic": "context",
+                "expr": "'CA-'||customer_id",
+                "context_column": "cust_acct_id"
+              },
+              {
+                "target_field": "product_id",
+                "join_key": "NCC_SUBSCRIPTION.subscription_id -> NCC_PRODUCT.subscription_id -> NCC_PRODUCT.product_id",
+                "value_semantic": "source",
+                "source_column": "product_id"
+              },
+              {
+                "target_field": "rel_type",
+                "join_key": null,
+                "value_semantic": "const",
+                "const_value": "owns"
+              }
+            ],
+            "target_fields": [
+              "cust_acct_id",
+              "product_id",
+              "rel_type"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": null,
+            "projection_js": "function scalar(v) {\n  if (v === null || v === undefined) return null;\n  try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}\n  return '' + v;\n}\nself.result = [];\nself.result.push({\n  cust_acct_id: scalar(parent_cust_acct_id),\n  product_id: scalar(product_id),\n  rel_type: \"owns\"\n});\nself.result;",
+            "use_now": false,
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CUSTOMER__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "profile": "snapshot_1to1_parent_scoped",
+          "context": {
+            "driver_key": "customer_id",
+            "parent_rows_field": "customer_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": null,
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_CUSTOMER",
+            "sql": "select * from main.SBL_CUSTOMER",
+            "luid_sql": "select customer_id, status, party_id from SIEBEL_SYSTEM.SBL_CUSTOMER",
+            "source_columns": [
+              "customer_id",
+              "status",
+              "party_id"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CUSTOMER",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "customer_id"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "customer_id",
+                "value_semantic": "source",
+                "source_column": "customer_id"
+              },
+              {
+                "target_field": "status",
+                "value_semantic": "source",
+                "source_column": "status"
+              },
+              {
+                "target_field": "engaged_party_id",
+                "value_semantic": "source",
+                "source_column": "party_id"
+              },
+              {
+                "target_field": "created_dt",
+                "value_semantic": "now"
+              }
+            ],
+            "target_fields": [
+              "customer_id",
+              "status",
+              "engaged_party_id",
+              "created_dt"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": 1,
+            "emit_rows": null,
+            "row_match_policy": "ONE_ONLY",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CUST_ACCT__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "profile": "snapshot_1to1_parent_scoped",
+          "context": {
+            "driver_key": "cust_acct_id",
+            "parent_rows_field": "customer_id",
+            "rename_alias": "customer_id",
+            "rename_strip_prefix": null,
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_CUSTOMER",
+            "sql": "select * from main.SBL_CUSTOMER",
+            "luid_sql": "select customer_id, status from SIEBEL_SYSTEM.SBL_CUSTOMER",
+            "source_columns": [
+              "customer_id",
+              "status"
+            ]
+          },
+          "load": {
+            "target_table": "TC_CUST_ACCT",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "cust_acct_id"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "cust_acct_id",
+                "value_semantic": "expr",
+                "expr": "'CA_' || customer_id",
+                "expr_kind": "concat_prefix",
+                "const_prefix": "CA_",
+                "source_column": "customer_id"
+              },
+              {
+                "target_field": "customer_id",
+                "value_semantic": "source",
+                "source_column": "customer_id"
+              },
+              {
+                "target_field": "account_type",
+                "value_semantic": "const",
+                "const_value": "consumer"
+              },
+              {
+                "target_field": "status",
+                "value_semantic": "source",
+                "source_column": "status"
+              },
+              {
+                "target_field": "created_dt",
+                "value_semantic": "now"
+              }
+            ],
+            "target_fields": [
+              "cust_acct_id",
+              "customer_id",
+              "account_type",
+              "status",
+              "created_dt"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": 1,
+            "emit_rows": null,
+            "row_match_policy": "ONE_ONLY",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PARTY__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "profile": "snapshot_1to1_parent_scoped",
+          "context": {
+            "driver_key": "party_id",
+            "parent_rows_field": "party_id",
+            "rename_alias": "party_id",
+            "rename_strip_prefix": null,
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_CUSTOMER",
+            "sql": "select * from main.SBL_CUSTOMER",
+            "luid_sql": "select party_id, status, first_name, last_name from SIEBEL_SYSTEM.SBL_CUSTOMER",
+            "source_columns": [
+              "party_id",
+              "status",
+              "first_name",
+              "last_name"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PARTY",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "party_id"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "party_id",
+                "value_semantic": "source",
+                "source_column": "party_id"
+              },
+              {
+                "target_field": "party_type",
+                "value_semantic": "const",
+                "const_value": "Individual"
+              },
+              {
+                "target_field": "status",
+                "value_semantic": "source",
+                "source_column": "status"
+              },
+              {
+                "target_field": "given_name",
+                "value_semantic": "source",
+                "source_column": "first_name"
+              },
+              {
+                "target_field": "family_name",
+                "value_semantic": "source",
+                "source_column": "last_name"
+              },
+              {
+                "target_field": "org_name",
+                "value_semantic": "null"
+              },
+              {
+                "target_field": "created_dt",
+                "value_semantic": "now"
+              }
+            ],
+            "target_fields": [
+              "party_id",
+              "party_type",
+              "status",
+              "given_name",
+              "family_name",
+              "org_name",
+              "created_dt"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": 1,
+            "emit_rows": null,
+            "row_match_policy": "ONE_ONLY",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PRODUCT__NCC__NCC_PRODUCT",
+        "template_id": "TPL_ARRAY_INPUT_TO_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "profile": "array_input_to_columns_parent_scoped",
+          "context": {
+            "driver_key": "product_id",
+            "parent_rows_field": "product_id",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "NCC_SYSTEM",
+            "system": "NCC_SYSTEM",
+            "table": "NCC_PRODUCT",
+            "sql": "select * from main.NCC_PRODUCT",
+            "luid_sql": "select product_id, status, start_dt, end_dt, offering_id from NCC_SYSTEM.NCC_PRODUCT",
+            "source_columns": [
+              "product_id",
+              "status",
+              "start_dt",
+              "end_dt",
+              "offering_id"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PRODUCT",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "product_id",
+              "start_date"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "product_id",
+                "value_semantic": "source",
+                "source_column": "product_id"
+              },
+              {
+                "target_field": "status",
+                "value_semantic": "source",
+                "source_column": "status"
+              },
+              {
+                "target_field": "start_date",
+                "value_semantic": "source",
+                "source_column": "start_dt"
+              },
+              {
+                "target_field": "termination_date",
+                "value_semantic": "source",
+                "source_column": "end_dt"
+              },
+              {
+                "target_field": "product_offering_id",
+                "value_semantic": "source",
+                "source_column": "offering_id"
+              },
+              {
+                "target_field": "created_dt",
+                "value_semantic": "now"
+              }
+            ],
+            "target_fields": [
+              "product_id",
+              "status",
+              "start_date",
+              "termination_date",
+              "product_offering_id",
+              "created_dt"
+            ]
+          },
+          "behavior": {
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PRODUCT__Siebel__SBL_ASSET",
+        "template_id": "TPL_ARRAY_INPUT_TO_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "profile": "array_input_to_columns_parent_scoped",
+          "context": {
+            "driver_key": "product_id",
+            "parent_rows_field": "product_id",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_ASSET",
+            "sql": "select * from main.SBL_ASSET",
+            "luid_sql": "select product_id, status, start_dt, contract_end_dt, offering_id from SIEBEL_SYSTEM.SBL_ASSET",
+            "source_columns": [
+              "product_id",
+              "status",
+              "start_dt",
+              "contract_end_dt",
+              "offering_id"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PRODUCT",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "product_id",
+              "start_date"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "created_dt",
+                "value_semantic": "now"
+              },
+              {
+                "target_field": "product_id",
+                "value_semantic": "source",
+                "source_column": "product_id"
+              },
+              {
+                "target_field": "status",
+                "value_semantic": "source",
+                "source_column": "status"
+              },
+              {
+                "target_field": "start_date",
+                "value_semantic": "source",
+                "source_column": "start_dt"
+              },
+              {
+                "target_field": "termination_date",
+                "value_semantic": "source",
+                "source_column": "contract_end_dt"
+              },
+              {
+                "target_field": "product_offering_id",
+                "value_semantic": "source",
+                "source_column": "offering_id"
+              }
+            ],
+            "target_fields": [
+              "created_dt",
+              "product_id",
+              "status",
+              "start_date",
+              "termination_date",
+              "product_offering_id"
+            ]
+          },
+          "behavior": {
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PROD_CHAR__NCC__NCC_COMMITMENT",
+        "template_id": "TPL_ARRAY_INPUT_TO_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "array_input_to_eav_parent_scoped",
+          "context": {
+            "driver_key": "product_id",
+            "parent_rows_field": "product_id",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "NCC_SYSTEM",
+            "system": "NCC_SYSTEM",
+            "table": "NCC_COMMITMENT",
+            "sql": "select * from main.NCC_COMMITMENT",
+            "luid_sql": "select product_id, commitment_type, start_dt, end_dt, early_term_fee_usd from NCC_SYSTEM.NCC_COMMITMENT",
+            "source_columns": [
+              "product_id",
+              "commitment_type",
+              "start_dt",
+              "end_dt",
+              "early_term_fee_usd"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PROD_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "product_id",
+              "name",
+              "value_type"
+            ],
+            "iterate_mode": "Iterate",
+            "target_fields": [
+              "product_id",
+              "name",
+              "value",
+              "value_type"
+            ]
+          },
+          "behavior": {
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "product_id",
+                "fields": {
+                  "product_id": {
+                    "op": "CONTEXT",
+                    "context_key": "product_id"
+                  },
+                  "value_type": {
+                    "op": "EXPR",
+                    "expr": "(commitment_type) + ':' + start_dt"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "commitmentEndDt"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_COMMITMENT.end_dt"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_2",
+                "emit_when": "product_id",
+                "fields": {
+                  "product_id": {
+                    "op": "CONTEXT",
+                    "context_key": "product_id"
+                  },
+                  "value_type": {
+                    "op": "EXPR",
+                    "expr": "(commitment_type) + ':' + start_dt"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "earlyTermFeeUsd"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_COMMITMENT.early_term_fee_usd"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PROD_CHAR__NCC__NCC_PRODUCT_PARAM_VALUE",
+        "template_id": "TPL_ARRAY_INPUT_TO_EAV_PARENT_SCOPED",
+        "spec": {
+          "profile": "array_input_to_eav_parent_scoped",
+          "context": {
+            "driver_key": "product_id",
+            "parent_rows_field": "product_id",
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "NCC_SYSTEM",
+            "system": "NCC_SYSTEM",
+            "table": "NCC_PRODUCT_PARAM_VALUE",
+            "sql": "select * from main.NCC_PRODUCT_PARAM_VALUE",
+            "luid_sql": "select product_id, product_characteristic, param_name, param_value from NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE",
+            "source_columns": [
+              "product_id",
+              "product_characteristic",
+              "param_name",
+              "param_value"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PROD_CHAR",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "product_id",
+              "name",
+              "value_type"
+            ],
+            "iterate_mode": "Iterate",
+            "target_fields": [
+              "product_id",
+              "name",
+              "value",
+              "value_type"
+            ]
+          },
+          "behavior": {
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "product_id",
+                "fields": {
+                  "product_id": {
+                    "op": "CONTEXT",
+                    "context_key": "product_id"
+                  },
+                  "value_type": {
+                    "op": "EXPR",
+                    "expr": "'product_characteristic:' +  now()"
+                  },
+                  "name": {
+                    "op": "EXPR",
+                    "expr": "param_name"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE.param_value"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_CNT_MED__BSCS__JOINED",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "spec": {
+          "profile": "join_to_1_parent_scoped",
+          "context": {
+            "driver_key": "party_id",
+            "parent_rows_field": "party_id",
+            "rename_alias": "party_id",
+            "rename_strip_prefix": null,
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "BSCS_SYSTEM",
+            "system": "BSCS_SYSTEM",
+            "table": "BSCS_BILLING_ACCOUNT",
+            "sql": "select * from main.BSCS_BILLING_ACCOUNT",
+            "luid_sql": null,
+            "source_columns": [
+              "is_primary",
+              "line1",
+              "customer_id"
+            ]
+          },
+          "bridge": {
+            "enabled": true,
+            "interface": "SIEBEL_SYSTEM",
+            "sql": "SELECT customer_id FROM main.SBL_CUSTOMER",
+            "bridge_input": "party_id"
+          },
+          "join_query": {
+            "interface": "BSCS_SYSTEM",
+            "sql": "SELECT DISTINCT\n    t2.is_primary AS is_primary,\n    t3.line1 AS line1,\n    t1.customer_id AS customer_id\nFROM BSCS_BILLING_ACCOUNT t1\nJOIN BSCS_ACCOUNT_ADDRESS t2 ON t1.customer_id = t2.billing_account_id\nJOIN BSCS_ADDRESS t3 ON t2.billing_account_id = t3.address_id",
+            "source_columns": [
+              "is_primary",
+              "line1",
+              "customer_id"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PTY_CNT_MED",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "party_id",
+              "medium_type",
+              "characteristic_json"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "party_id",
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id",
+                "value_semantic": "context",
+                "expr": "party_id",
+                "context_column": "party_id"
+              },
+              {
+                "target_field": "medium_type",
+                "join_key": null,
+                "value_semantic": "const",
+                "const_value": "postalAddress"
+              },
+              {
+                "target_field": "preferred_flag",
+                "join_key": "BSCS_BILLING_ACCOUNT.billing_account_id -> BSCS_ACCOUNT_ADDRESS.billing_account_id -> BSCS_ACCOUNT_ADDRESS.is_primary",
+                "value_semantic": "source",
+                "source_column": "is_primary"
+              },
+              {
+                "target_field": "characteristic_json",
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id --> BSCS_BILLING_ACCOUNT.customer_id -> BSCS_ACCOUNT_ADDRESS.billing_account_id -> BSCS_ADDRESS.address_id -> BSCS_ADDRESS.line1",
+                "value_semantic": "source",
+                "source_column": "line1"
+              }
+            ],
+            "target_fields": [
+              "party_id",
+              "medium_type",
+              "preferred_flag",
+              "characteristic_json"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": null,
+            "projection_js": "function scalar(v) {\n  if (v === null || v === undefined) return null;\n  try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}\n  return '' + v;\n}\nself.result = [];\nself.result.push({\n  party_id: scalar(parent_party_id),\n  medium_type: \"postalAddress\",\n  preferred_flag: scalar(is_primary),\n  characteristic_json: scalar(line1)\n});\nself.result;",
+            "use_now": false,
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_CNT_MED__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "profile": "multirow_from_columns_parent_scoped",
+          "context": {
+            "driver_key": "party_id",
+            "parent_rows_field": "party_id",
+            "rename_alias": "party_id",
+            "rename_strip_prefix": null,
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_CUSTOMER",
+            "sql": "select * from main.SBL_CUSTOMER",
+            "luid_sql": "select party_id, msisdn from SIEBEL_SYSTEM.SBL_CUSTOMER",
+            "source_columns": [
+              "party_id",
+              "email",
+              "msisdn"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PTY_CNT_MED",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "party_id",
+              "medium_type",
+              "characteristic_json"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "party_id",
+                "value_semantic": "source",
+                "source_column": "party_id"
+              },
+              {
+                "target_field": "medium_type",
+                "value_semantic": "const",
+                "const_value": "telephoneNumber"
+              },
+              {
+                "target_field": "preferred_flag",
+                "value_semantic": "source",
+                "source_column": "msisdn"
+              },
+              {
+                "target_field": "characteristic_json",
+                "value_semantic": "source",
+                "source_column": "msisdn"
+              }
+            ],
+            "target_fields": [
+              "party_id",
+              "medium_type",
+              "preferred_flag",
+              "characteristic_json"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": 1,
+            "emit_rows": [
+              {
+                "row_id": "EMAIL",
+                "emit_when": "party_id && email",
+                "fields": {
+                  "party_id": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                  },
+                  "medium_type": {
+                    "op": "CONST",
+                    "value": "emailAddress"
+                  },
+                  "preferred_flag": {
+                    "op": "EXPR",
+                    "expr": "(msisdn ? 0 : 1)"
+                  },
+                  "characteristic_json": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.email"
+                  }
+                }
+              },
+              {
+                "row_id": "PHONE",
+                "emit_when": "party_id && msisdn",
+                "fields": {
+                  "party_id": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                  },
+                  "medium_type": {
+                    "op": "CONST",
+                    "value": "telephoneNumber"
+                  },
+                  "preferred_flag": {
+                    "op": "CONST",
+                    "value": "1"
+                  },
+                  "characteristic_json": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.msisdn"
+                  }
+                }
+              }
+            ],
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_EXT_REF__BSCS__BSCS_CUSTOMER",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "spec": {
+          "profile": "join_to_1_parent_scoped",
+          "context": {
+            "driver_key": "party_id",
+            "parent_rows_field": "party_id",
+            "rename_alias": "party_id",
+            "rename_strip_prefix": null,
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "BSCS_SYSTEM",
+            "system": "BSCS_SYSTEM",
+            "table": "BSCS_CUSTOMER",
+            "sql": "select * from main.BSCS_CUSTOMER",
+            "luid_sql": null,
+            "source_columns": [
+              "msisdn",
+              "customer_id"
+            ]
+          },
+          "bridge": {
+            "enabled": true,
+            "interface": "SIEBEL_SYSTEM",
+            "sql": "SELECT customer_id FROM main.SBL_CUSTOMER",
+            "bridge_input": "party_id"
+          },
+          "join_query": {
+            "interface": "BSCS_SYSTEM",
+            "sql": "SELECT DISTINCT\n    t1.msisdn AS msisdn,\n    t1.customer_id AS customer_id\nFROM BSCS_CUSTOMER t1",
+            "source_columns": [
+              "msisdn",
+              "customer_id"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PTY_EXT_REF",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "party_id",
+              "external_ref_type",
+              "external_id"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "party_id",
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id",
+                "value_semantic": "context",
+                "expr": "party_id",
+                "context_column": "party_id"
+              },
+              {
+                "target_field": "external_ref_type",
+                "join_key": null,
+                "value_semantic": "const",
+                "const_value": "MSISDN"
+              },
+              {
+                "target_field": "external_id",
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id --> BSCS_SYSTEM.BSCS_CUSTOMER.customer_id",
+                "value_semantic": "source",
+                "source_column": "msisdn"
+              }
+            ],
+            "target_fields": [
+              "party_id",
+              "external_ref_type",
+              "external_id"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": null,
+            "emit_rows": [
+              {
+                "row_id": "BSCS_CUSTOMER_ID",
+                "emit_when": "customer_id",
+                "fields": {
+                  "external_ref_type": {
+                    "op": "CONST",
+                    "value": "BSCS_CUSTOMER_ID"
+                  },
+                  "external_id": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.customer_id"
+                  }
+                }
+              },
+              {
+                "row_id": "MSISDN",
+                "emit_when": "msisdn",
+                "fields": {
+                  "external_ref_type": {
+                    "op": "CONST",
+                    "value": "MSISDN"
+                  },
+                  "external_id": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.msisdn"
+                  }
+                }
+              }
+            ],
+            "projection_js": "function scalar(v) {\n  if (v === null || v === undefined) return null;\n  try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}\n  return '' + v;\n}\nvar s_parent_party_id = scalar(parent_party_id);\nvar s_customer_id = scalar(customer_id);\nvar s_msisdn = scalar(msisdn);\nself.result = [];\nif (customer_id) {\n  self.result.push({\n    party_id: s_parent_party_id,\n    external_ref_type: \"BSCS_CUSTOMER_ID\",\n    external_id: s_customer_id\n  });\n}\nif (msisdn) {\n  self.result.push({\n    party_id: s_parent_party_id,\n    external_ref_type: \"MSISDN\",\n    external_id: s_msisdn\n  });\n}\nself.result;",
+            "use_now": false,
+            "row_match_policy": "MULTIPLE",
+            "latest_by": "CURRENT"
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_EXT_REF__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "profile": "snapshot_1to1_parent_scoped",
+          "context": {
+            "driver_key": "party_id",
+            "parent_rows_field": "party_id",
+            "rename_alias": "party_id",
+            "rename_strip_prefix": null,
+            "include_population_input": true,
+            "required": false
+          },
+          "source": {
+            "interface": "SIEBEL_SYSTEM",
+            "system": "SIEBEL_SYSTEM",
+            "table": "SBL_CUSTOMER",
+            "sql": "select * from main.SBL_CUSTOMER",
+            "luid_sql": "select party_id, customer_id from SIEBEL_SYSTEM.SBL_CUSTOMER",
+            "source_columns": [
+              "party_id",
+              "customer_id"
+            ]
+          },
+          "load": {
+            "target_table": "TC_PTY_EXT_REF",
+            "target_interface": "fabric",
+            "target_schema": null,
+            "dialect": "sqlite",
+            "keys": [
+              "party_id",
+              "external_ref_type",
+              "external_id"
+            ],
+            "iterate_mode": "Iterate",
+            "field_bindings": [
+              {
+                "target_field": "party_id",
+                "value_semantic": "source",
+                "source_column": "party_id"
+              },
+              {
+                "target_field": "external_ref_type",
+                "value_semantic": "const",
+                "const_value": "SIEBEL_CUSTOMER_ID"
+              },
+              {
+                "target_field": "external_id",
+                "value_semantic": "source",
+                "source_column": "customer_id"
+              }
+            ],
+            "target_fields": [
+              "party_id",
+              "external_ref_type",
+              "external_id"
+            ]
+          },
+          "behavior": {
+            "sync_delete": true,
+            "assert_max_rows": 1,
+            "emit_rows": null,
+            "row_match_policy": "ONE_ONLY",
+            "latest_by": "CURRENT"
+          }
+        }
+      }
+    ],
+    "python": [
+      {
+        "plan_id": "TC_CA_CHAR__BSCS__BSCS_CUSTOMER",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CA_CHAR",
+            "source_system": "BSCS_SYSTEM",
+            "source_table": "BSCS_CUSTOMER",
+            "source_interface": "BSCS_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "credit_class",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "BSCS_CUSTOMER"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "creditClass"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.credit_class"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_2",
+                "emit_when": "risk_flag",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "BSCS_CUSTOMER"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "billingRiskFlag"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.risk_flag"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__NCC__NCC_ELIGIBILITY_FLAG",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CA_CHAR",
+            "source_system": "NCC_SYSTEM",
+            "source_table": "NCC_ELIGIBILITY_FLAG",
+            "source_interface": "NCC_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "flag_value",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "NCC_ELIGIBILITY_FLAG"
+                  },
+                  "name": {
+                    "op": "EXPR",
+                    "expr": "'flag.' + flag_code + '.' + effective_dt"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_ELIGIBILITY_FLAG.flag_value"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__NCC__NCC_OFFER_QUAL_REQUEST",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CA_CHAR",
+            "source_system": "NCC_SYSTEM",
+            "source_table": "NCC_OFFER_QUAL_REQUEST",
+            "source_interface": "NCC_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "past_due_amount",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "NCC_OFFER_QUAL_REQUEST"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "pastDueAmountSnapshot"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_OFFER_QUAL_REQUEST.past_due_amount"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_CHURN_SCORE",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CA_CHAR",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_CHURN_SCORE",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "churn_score",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "churnScore"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.churn_score"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_2",
+                "emit_when": "risk_band",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "riskBand"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.risk_band"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_3",
+                "emit_when": "model_version",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "churnModelVersion"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.model_version"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_4",
+                "emit_when": "scored_dt",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "churnScoredDt"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.scored_dt"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_5",
+                "emit_when": "top_driver",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CHURN_SCORE"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "topChurnDriver"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CHURN_SCORE.top_driver"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CA_CHAR",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_CUSTOMER",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "segment_code",
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_CUSTOMER"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "segmentCode"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.segment_code"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_CHAR__Siebel__SBL_INTERACTION",
+        "template_id": "TPL_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CA_CHAR",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_INTERACTION",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": null,
+                "fields": {
+                  "cust_acct_id": {
+                    "op": "CONTEXT",
+                    "context_key": "cust_acct_id"
+                  },
+                  "value_type": {
+                    "op": "CONST",
+                    "value": "SBL_INTERACTION"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "lastInteractionOutcome"
+                  },
+                  "value": {
+                    "op": "EXPR",
+                    "expr": "outcome_code + '|' + end_ts"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CA_PROD_MAP__NCC__JOINED",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_join_to_1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CA_PROD_MAP",
+            "source_system": "NCC_SYSTEM",
+            "source_table": "NCC_SUBSCRIPTION",
+            "source_interface": "NCC_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "product_id",
+              "rel_type"
+            ],
+            "join_key_notation": [
+              {
+                "target_field": "product_id",
+                "source_path": "NCC_SYSTEM.NCC_PRODUCT.product_id",
+                "join_key": "NCC_SUBSCRIPTION.subscription_id -> NCC_PRODUCT.subscription_id -> NCC_PRODUCT.product_id",
+                "pattern_id": "P_DIRECT",
+                "pattern_args": null
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CUSTOMER__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CUSTOMER",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_CUSTOMER",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "customer_id",
+            "target_fields": [
+              "customer_id",
+              "status",
+              "engaged_party_id",
+              "created_dt"
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_CUST_ACCT__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_CUST_ACCT",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_CUSTOMER",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "cust_acct_id",
+            "target_fields": [
+              "cust_acct_id",
+              "customer_id",
+              "account_type",
+              "status",
+              "created_dt"
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PARTY__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_PARTY",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_CUSTOMER",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "party_id",
+            "target_fields": [
+              "party_id",
+              "party_type",
+              "status",
+              "given_name",
+              "family_name",
+              "org_name",
+              "created_dt"
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PRODUCT__NCC__NCC_PRODUCT",
+        "template_id": "TPL_ARRAY_INPUT_TO_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_array_input_to_columns_parent_scoped",
+          "callable": "run",
+          "args": {
+            "target_table": "TC_PRODUCT",
+            "source_system": "NCC_SYSTEM",
+            "source_table": "NCC_PRODUCT",
+            "source_interface": "NCC_SYSTEM",
+            "driver_key": "product_id",
+            "target_fields": [
+              "product_id",
+              "status",
+              "start_date",
+              "termination_date",
+              "product_offering_id",
+              "created_dt"
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PRODUCT__Siebel__SBL_ASSET",
+        "template_id": "TPL_ARRAY_INPUT_TO_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_array_input_to_columns_parent_scoped",
+          "callable": "run",
+          "args": {
+            "target_table": "TC_PRODUCT",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_ASSET",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "product_id",
+            "target_fields": [
+              "created_dt",
+              "product_id",
+              "status",
+              "start_date",
+              "termination_date",
+              "product_offering_id"
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PROD_CHAR__NCC__NCC_COMMITMENT",
+        "template_id": "TPL_ARRAY_INPUT_TO_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_array_input_to_eav_parent_scoped",
+          "callable": "run",
+          "args": {
+            "target_table": "TC_PROD_CHAR",
+            "source_system": "NCC_SYSTEM",
+            "source_table": "NCC_COMMITMENT",
+            "source_interface": "NCC_SYSTEM",
+            "driver_key": "product_id",
+            "target_fields": [
+              "product_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "product_id",
+                "fields": {
+                  "product_id": {
+                    "op": "CONTEXT",
+                    "context_key": "product_id"
+                  },
+                  "value_type": {
+                    "op": "EXPR",
+                    "expr": "(commitment_type) + ':' + start_dt"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "commitmentEndDt"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_COMMITMENT.end_dt"
+                  }
+                }
+              },
+              {
+                "row_id": "EAV_2",
+                "emit_when": "product_id",
+                "fields": {
+                  "product_id": {
+                    "op": "CONTEXT",
+                    "context_key": "product_id"
+                  },
+                  "value_type": {
+                    "op": "EXPR",
+                    "expr": "(commitment_type) + ':' + start_dt"
+                  },
+                  "name": {
+                    "op": "CONST",
+                    "value": "earlyTermFeeUsd"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_COMMITMENT.early_term_fee_usd"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PROD_CHAR__NCC__NCC_PRODUCT_PARAM_VALUE",
+        "template_id": "TPL_ARRAY_INPUT_TO_EAV_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_array_input_to_eav_parent_scoped",
+          "callable": "run",
+          "args": {
+            "target_table": "TC_PROD_CHAR",
+            "source_system": "NCC_SYSTEM",
+            "source_table": "NCC_PRODUCT_PARAM_VALUE",
+            "source_interface": "NCC_SYSTEM",
+            "driver_key": "product_id",
+            "target_fields": [
+              "product_id",
+              "value_type",
+              "name",
+              "value"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EAV_1",
+                "emit_when": "product_id",
+                "fields": {
+                  "product_id": {
+                    "op": "CONTEXT",
+                    "context_key": "product_id"
+                  },
+                  "value_type": {
+                    "op": "EXPR",
+                    "expr": "'product_characteristic:' +  now()"
+                  },
+                  "name": {
+                    "op": "EXPR",
+                    "expr": "param_name"
+                  },
+                  "value": {
+                    "op": "PATH",
+                    "path": "NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE.param_value"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_CNT_MED__BSCS__JOINED",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_join_to_1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_PTY_CNT_MED",
+            "source_system": "BSCS_SYSTEM",
+            "source_table": "BSCS_BILLING_ACCOUNT",
+            "source_interface": "BSCS_SYSTEM",
+            "driver_key": "party_id",
+            "target_fields": [
+              "party_id",
+              "medium_type",
+              "preferred_flag",
+              "characteristic_json"
+            ],
+            "join_key_notation": [
+              {
+                "target_field": "party_id",
+                "source_path": null,
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id",
+                "pattern_id": "P_EXPR",
+                "pattern_args": "expr=party_id"
+              },
+              {
+                "target_field": "preferred_flag",
+                "source_path": "BSCS_SYSTEM.BSCS_ACCOUNT_ADDRESS.is_primary",
+                "join_key": "BSCS_BILLING_ACCOUNT.billing_account_id -> BSCS_ACCOUNT_ADDRESS.billing_account_id -> BSCS_ACCOUNT_ADDRESS.is_primary",
+                "pattern_id": "P_DIRECT",
+                "pattern_args": null
+              },
+              {
+                "target_field": "characteristic_json",
+                "source_path": "BSCS_SYSTEM.BSCS_ADDRESS.line1",
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id --> BSCS_BILLING_ACCOUNT.customer_id -> BSCS_ACCOUNT_ADDRESS.billing_account_id -> BSCS_ADDRESS.address_id -> BSCS_ADDRESS.line1",
+                "pattern_id": "P_DIRECT",
+                "pattern_args": null
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_CNT_MED__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_PTY_CNT_MED",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_CUSTOMER",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "party_id",
+            "target_fields": [
+              "party_id",
+              "medium_type",
+              "preferred_flag",
+              "characteristic_json"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "EMAIL",
+                "emit_when": "party_id && email",
+                "fields": {
+                  "party_id": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                  },
+                  "medium_type": {
+                    "op": "CONST",
+                    "value": "emailAddress"
+                  },
+                  "preferred_flag": {
+                    "op": "EXPR",
+                    "expr": "(msisdn ? 0 : 1)"
+                  },
+                  "characteristic_json": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.email"
+                  }
+                }
+              },
+              {
+                "row_id": "PHONE",
+                "emit_when": "party_id && msisdn",
+                "fields": {
+                  "party_id": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.party_id"
+                  },
+                  "medium_type": {
+                    "op": "CONST",
+                    "value": "telephoneNumber"
+                  },
+                  "preferred_flag": {
+                    "op": "CONST",
+                    "value": "1"
+                  },
+                  "characteristic_json": {
+                    "op": "PATH",
+                    "path": "SIEBEL_SYSTEM.SBL_CUSTOMER.msisdn"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_EXT_REF__BSCS__BSCS_CUSTOMER",
+        "template_id": "TPL_JOIN_TO_1_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_join_to_1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_PTY_EXT_REF",
+            "source_system": "BSCS_SYSTEM",
+            "source_table": "BSCS_CUSTOMER",
+            "source_interface": "BSCS_SYSTEM",
+            "driver_key": "party_id",
+            "target_fields": [
+              "party_id",
+              "external_ref_type",
+              "external_id"
+            ],
+            "emit_rows": [
+              {
+                "row_id": "BSCS_CUSTOMER_ID",
+                "emit_when": "customer_id",
+                "fields": {
+                  "external_ref_type": {
+                    "op": "CONST",
+                    "value": "BSCS_CUSTOMER_ID"
+                  },
+                  "external_id": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.customer_id"
+                  }
+                }
+              },
+              {
+                "row_id": "MSISDN",
+                "emit_when": "msisdn",
+                "fields": {
+                  "external_ref_type": {
+                    "op": "CONST",
+                    "value": "MSISDN"
+                  },
+                  "external_id": {
+                    "op": "PATH",
+                    "path": "BSCS_SYSTEM.BSCS_CUSTOMER.msisdn"
+                  }
+                }
+              }
+            ],
+            "join_key_notation": [
+              {
+                "target_field": "party_id",
+                "source_path": null,
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id",
+                "pattern_id": "P_EXPR",
+                "pattern_args": "expr=party_id"
+              },
+              {
+                "target_field": "external_id",
+                "source_path": "BSCS_SYSTEM.BSCS_CUSTOMER.msisdn",
+                "join_key": "SBL_CUSTOMER.party_id --> SBL_CUSTOMER.customer_id --> BSCS_SYSTEM.BSCS_CUSTOMER.customer_id",
+                "pattern_id": "P_DIRECT",
+                "pattern_args": null
+              }
+            ]
+          }
+        }
+      },
+      {
+        "plan_id": "TC_PTY_EXT_REF__Siebel__SBL_CUSTOMER",
+        "template_id": "TPL_COLUMNS_PARENT_SCOPED",
+        "spec": {
+          "module": "pipelines.tpl_snapshot_1to1_parent_scoped",
+          "callable": "run",
+          "args": {
+            "mode": "batch",
+            "target_table": "TC_PTY_EXT_REF",
+            "source_system": "SIEBEL_SYSTEM",
+            "source_table": "SBL_CUSTOMER",
+            "source_interface": "SIEBEL_SYSTEM",
+            "driver_key": "party_id",
+            "target_fields": [
+              "party_id",
+              "external_ref_type",
+              "external_id"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "dictionaries": {
+    "TC_PARTY.status.map": {
+      "ACTIVE": "active"
+    },
+    "TC_CUSTOMER.status.map": {
+      "ACTIVE": "active"
+    },
+    "TC_CUST_ACCT.status.map": {
+      "ACTIVE": "active"
+    }
+  },
+  "warnings": [],
+  "errors": []
+}

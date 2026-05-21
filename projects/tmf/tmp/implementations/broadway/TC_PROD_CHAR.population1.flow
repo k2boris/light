@@ -1,0 +1,219 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          product_id:
+            external: product_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: NCC_SYSTEM
+          sql:
+            const: select * from main.NCC_COMMITMENT
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: PopulationArgs/parent_rows
+          luid_column_name:
+            const: select product_id, commitment_type, start_dt, end_dt, early_term_fee_usd from NCC_SYSTEM.NCC_COMMITMENT
+        out:
+          result:
+            schema: '#ref'
+  Stage 3:
+    actors: {}
+  Stage 1:
+    actors:
+      JavaScript1:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+              
+                // unwrap 1-element list-ish values
+                try {
+                  if (typeof v !== "string" && v[0] !== undefined) v = v[0];
+                } catch (e) {}
+              
+                return "" + v;
+              }
+              
+              var s_product_id = scalar(product_id);
+              var s_commitment_type = scalar(commitment_type);
+              var s_start_dt = scalar(start_dt);
+              var s_end_dt = scalar(end_dt);
+              var s_early_term_fee_usd = scalar(early_term_fee_usd);
+              
+              self.result = [];
+              
+              if (s_product_id) {
+                self.result.push({
+                  product_id: s_product_id,
+                  value_type: (s_commitment_type) + ':' + s_start_dt,
+                  name: "commitmentEndDt",
+                  value: s_end_dt
+                });
+              }
+              
+              if (s_product_id) {
+                self.result.push({
+                  product_id: s_product_id,
+                  value_type: (s_commitment_type) + ':' + s_start_dt,
+                  name: "earlyTermFeeUsd",
+                  value: s_early_term_fee_usd
+                });
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: Query/result
+              iterate: Iterate
+            schema: '#ref'
+            mandatory: false
+          product_id:
+            link: Query/result/product_id
+            schema: '#ref'
+            mandatory: false
+          commitment_type:
+            link: Query/result/commitment_type
+            schema: '#ref'
+            mandatory: false
+          start_dt:
+            link: Query/result/start_dt
+            schema: '#ref'
+            mandatory: false
+          end_dt:
+            link: Query/result/end_dt
+            schema: '#ref'
+            mandatory: false
+          early_term_fee_usd:
+            link: Query/result/early_term_fee_usd
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      TC_PROD_CHAR:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - product_id
+              - name
+              - value
+              - value_type
+          keys:
+            const:
+              - product_id
+              - name
+              - value_type
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: JavaScript1/result
+              iterate: Iterate
+          command:
+            const: upsert
+          product_id:
+            link: JavaScript1/result/product_id
+            schema: string
+          name:
+            link: JavaScript1/result/name
+            schema: string
+          value:
+            link: JavaScript1/result/value
+            schema: string
+          value_type:
+            link: JavaScript1/result/value_type
+            schema: string
+  Stage 2: {}
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: string
+        commitment_type:
+          type: string
+        start_dt:
+          type: string
+        end_dt:
+          type: string
+        early_term_fee_usd:
+          type: string
+  JavaScript1.in.inputs:
+    type: array
+    items:
+      type: object
+  JavaScript1.out.result:
+    type: array
+    items:
+      type: object
+  JavaScript1.in.product_id:
+    type: array
+    items:
+      type: string
+  JavaScript1.in.commitment_type:
+    type: array
+    items:
+      type: string
+  JavaScript1.in.start_dt:
+    type: array
+    items:
+      type: string
+  JavaScript1.in.end_dt:
+    type: array
+    items:
+      type: string
+  JavaScript1.in.early_term_fee_usd:
+    type: array
+    items:
+      type: string

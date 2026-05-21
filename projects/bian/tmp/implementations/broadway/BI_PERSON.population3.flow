@@ -1,0 +1,273 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          party_id:
+            external: party_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        height: 199
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ ROWID_OBJECT: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/party_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      XRefBridge:
+        parent: SourceDbQuery
+        height: 258
+        in:
+          interface:
+            const: MDM_INFA_DS
+          sql:
+            const: 'SELECT SOURCE_KEY AS entity_id FROM main.C_XREF_PARTY WHERE SYSTEM_CODE = ''DJ'''
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 2:
+    actors:
+      QueryJoin:
+        parent: SourceDbQuery
+        height: 229
+        in:
+          interface:
+            const: DOWJONES_DS
+          sql:
+            const: SELECT * FROM (select * from main.dj_entity) __rowmatch LIMIT 1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: XRefBridge/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      ProjectRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}
+                return '' + v;
+              }
+              self.result = [];
+              self.result.push({
+                party_id: scalar(parent_party_id),
+                first_name: scalar(primary_name),
+                date_of_birth: scalar(date_of_birth),
+                gender_code: scalar(gender_code),
+                citizenship_code: scalar(nationality_code),
+                residency_country: scalar(country_of_res)
+              });
+              self.result;
+          parent_party_id:
+            link: PopulationArgs/parent_rows/party_id
+            schema: string
+            mandatory: false
+          entity_id:
+            link:
+              path: QueryJoin/result/entity_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          primary_name:
+            link:
+              path: QueryJoin/result/primary_name
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          date_of_birth:
+            link:
+              path: QueryJoin/result/date_of_birth
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          gender_code:
+            link:
+              path: QueryJoin/result/gender_code
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          nationality_code:
+            link:
+              path: QueryJoin/result/nationality_code
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          country_of_res:
+            link:
+              path: QueryJoin/result/country_of_res
+              iterate: Iterate
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      BI_PERSON:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - party_id
+              - first_name
+              - date_of_birth
+              - gender_code
+              - citizenship_code
+              - residency_country
+          keys:
+            const:
+              - party_id
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: ProjectRows/result
+              iterate: Iterate
+          command:
+            const: upsert
+          party_id:
+            link: ProjectRows/result/party_id
+            schema: string
+          first_name:
+            link: ProjectRows/result/first_name
+            schema: string
+          date_of_birth:
+            link: ProjectRows/result/date_of_birth
+            schema: string
+          gender_code:
+            link: ProjectRows/result/gender_code
+            schema: string
+          citizenship_code:
+            link: ProjectRows/result/citizenship_code
+            schema: string
+          residency_country:
+            link: ProjectRows/result/residency_country
+            schema: string
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        ROWID_OBJECT:
+          type: string
+  QueryJoin.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        entity_id:
+          type: string
+        primary_name:
+          type: string
+        date_of_birth:
+          type: string
+        gender_code:
+          type: string
+        nationality_code:
+          type: string
+        country_of_res:
+          type: string
+  ProjectRows.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+        first_name:
+          type: string
+        date_of_birth:
+          type: string
+        gender_code:
+          type: string
+        citizenship_code:
+          type: string
+        residency_country:
+          type: string
+  XRefBridge.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        entity_id:
+          type: string

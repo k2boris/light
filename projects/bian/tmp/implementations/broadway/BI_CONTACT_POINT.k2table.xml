@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_CONTACT_POINT</Name>
+  <ID>tbl_BI_CONTACT_POINT</ID>
+  <Columns>
+    <Column name="contact_point_id" id="contact_point_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_id" id="party_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="contact_type" id="contact_type" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="contact_value" id="contact_value" index="3" datatype="TEXT" mandatory="true"/>
+    <Column name="is_primary" id="is_primary" index="4" datatype="INTEGER" mandatory="true"/>
+    <Column name="verified_flag" id="verified_flag" index="5" datatype="INTEGER" mandatory="true"/>
+    <Column name="verified_at" id="verified_at" index="6" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="contact_point_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_CONTACT_POINT" timestamp="2026-03-04">
+      <ColumnsList>contact_point_id,party_id,contact_type,contact_value,is_primary,verified_flag,verified_at</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

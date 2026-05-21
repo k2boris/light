@@ -1,0 +1,299 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          party_id:
+            external: party_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        height: 199
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ ROWID_OBJECT: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/party_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      XRefBridge:
+        parent: SourceDbQuery
+        height: 258
+        in:
+          interface:
+            const: MDM_INFA_DS
+          sql:
+            const: 'SELECT SOURCE_KEY AS customer_id FROM main.C_XREF_PARTY WHERE SYSTEM_CODE = ''TEMENOS'''
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 2:
+    actors:
+      QueryJoin:
+        parent: SourceDbQuery
+        height: 229
+        in:
+          interface:
+            const: CORE_TMNS_DS
+          sql:
+            const: SELECT * FROM (select * from main.customer) __rowmatch LIMIT 1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: XRefBridge/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      ProjectRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}
+                return '' + v;
+              }
+              self.result = [];
+              self.result.push({
+                kyc_assessment_id: scalar(customer_id),
+                party_id: scalar(parent_party_id),
+                kyc_status: scalar(kyc_status),
+                pep_flag: "0",
+                sanctions_flag: "0",
+                adverse_media_flag: "0",
+                last_reviewed_at: scalar(updated_at),
+                assessment_reason: "EVENT",
+                source_system_id: "TMNS-core",
+                source_record_ref: scalar(customer_id),
+                created_at: scalar(created_at),
+                updated_at: scalar(updated_at)
+              });
+              self.result;
+          parent_party_id:
+            link: PopulationArgs/parent_rows/party_id
+            schema: string
+            mandatory: false
+          customer_id:
+            link:
+              path: QueryJoin/result/customer_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          kyc_status:
+            link:
+              path: QueryJoin/result/kyc_status
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          updated_at:
+            link:
+              path: QueryJoin/result/updated_at
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          created_at:
+            link:
+              path: QueryJoin/result/created_at
+              iterate: Iterate
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      BI_KYC_ASSESSMENT:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - kyc_assessment_id
+              - party_id
+              - kyc_status
+              - pep_flag
+              - sanctions_flag
+              - adverse_media_flag
+              - last_reviewed_at
+              - assessment_reason
+              - source_system_id
+              - source_record_ref
+              - created_at
+              - updated_at
+          keys:
+            const:
+              - kyc_assessment_id
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: ProjectRows/result
+              iterate: Iterate
+          command:
+            const: upsert
+          kyc_assessment_id:
+            link: ProjectRows/result/kyc_assessment_id
+            schema: string
+          party_id:
+            link: ProjectRows/result/party_id
+            schema: string
+          kyc_status:
+            link: ProjectRows/result/kyc_status
+            schema: string
+          pep_flag:
+            link: ProjectRows/result/pep_flag
+            schema: string
+          sanctions_flag:
+            link: ProjectRows/result/sanctions_flag
+            schema: string
+          adverse_media_flag:
+            link: ProjectRows/result/adverse_media_flag
+            schema: string
+          last_reviewed_at:
+            link: ProjectRows/result/last_reviewed_at
+            schema: string
+          assessment_reason:
+            link: ProjectRows/result/assessment_reason
+            schema: string
+          source_system_id:
+            link: ProjectRows/result/source_system_id
+            schema: string
+          source_record_ref:
+            link: ProjectRows/result/source_record_ref
+            schema: string
+          created_at:
+            link: ProjectRows/result/created_at
+            schema: string
+          updated_at:
+            link: ProjectRows/result/updated_at
+            schema: string
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        ROWID_OBJECT:
+          type: string
+  QueryJoin.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        kyc_status:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+  ProjectRows.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        kyc_assessment_id:
+          type: string
+        party_id:
+          type: string
+        kyc_status:
+          type: string
+        pep_flag:
+          type: string
+        sanctions_flag:
+          type: string
+        adverse_media_flag:
+          type: string
+        last_reviewed_at:
+          type: string
+        assessment_reason:
+          type: string
+        source_system_id:
+          type: string
+        source_record_ref:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+  XRefBridge.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string

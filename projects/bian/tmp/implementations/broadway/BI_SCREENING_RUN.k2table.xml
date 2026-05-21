@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_SCREENING_RUN</Name>
+  <ID>tbl_BI_SCREENING_RUN</ID>
+  <Columns>
+    <Column name="screening_run_id" id="screening_run_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_id" id="party_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="run_type" id="run_type" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="trigger_reason" id="trigger_reason" index="3" datatype="TEXT"/>
+    <Column name="started_at" id="started_at" index="4" datatype="TEXT" mandatory="true"/>
+    <Column name="completed_at" id="completed_at" index="5" datatype="TEXT"/>
+    <Column name="status_code" id="status_code" index="6" datatype="TEXT" mandatory="true"/>
+    <Column name="source_system_id" id="source_system_id" index="7" datatype="TEXT"/>
+    <Column name="source_record_ref" id="source_record_ref" index="8" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="screening_run_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_SCREENING_RUN" timestamp="2026-03-04">
+      <ColumnsList>screening_run_id,party_id,run_type,trigger_reason,started_at,completed_at,status_code,source_system_id,source_record_ref</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

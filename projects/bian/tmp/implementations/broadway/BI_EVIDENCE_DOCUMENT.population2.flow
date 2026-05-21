@@ -1,0 +1,217 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        out:
+          parent_rows:
+            schema: '#ref'
+        in:
+          kyc_case_id:
+            external: kyc_case_id
+            schema: any
+            mandatory: false
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Stage 2:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ party_id: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/kyc_case_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: CRM_SF_DS
+          sql:
+            const: SELECT * FROM (select * from main.sf_identity_document) __rowmatch LIMIT 1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+          luid_column_name:
+            const: select document_id, party_id, doc_number_masked, created_at from CRM_SF_DS.sf_identity_document
+        out:
+          result:
+            schema: '#ref'
+  Stage 3:
+    actors: {}
+  Stage 1:
+    actors:
+      Const1:
+        parent: Const
+        in:
+          value:
+            const: ID_DOCUMENT
+            schema: string
+        out:
+          value:
+            schema: string
+      Const2:
+        parent: Const
+        in:
+          value:
+            const: SF-CRM
+            schema: string
+        out:
+          value:
+            schema: string
+  LU Table:
+    last: 1
+    actors:
+      BI_EVIDENCE_DOCUMENT:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - evidence_document_id
+              - party_id
+              - kyc_case_id
+              - document_type
+              - document_ref
+              - captured_at
+              - source_system_id
+              - source_record_ref
+          keys:
+            const:
+              - evidence_document_id
+          dialect:
+            const: sqlite
+          command:
+            const: upsert
+          evidence_document_id:
+            link: Query/result/document_id
+            schema: string
+          party_id:
+            link: Query/result/party_id
+            schema: string
+          kyc_case_id:
+            link: Query/result/party_id
+            schema: string
+          document_type:
+            link: Const1/value
+            schema: string
+          document_ref:
+            link: Query/result/doc_number_masked
+            schema: string
+          captured_at:
+            link: Query/result/created_at
+            schema: string
+          source_system_id:
+            link: Const2/value
+            schema: string
+          source_record_ref:
+            link: Query/result/document_id
+            schema: string
+          params:
+            link:
+              path: Query/result
+              iterate: Iterate
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        kyc_case_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        document_id:
+          type: string
+        party_id:
+          type: string
+        doc_number_masked:
+          type: string
+        created_at:
+          type: string
+  BI_EVIDENCE_DOCUMENT.in.evidence_document_id:
+    type: array
+    items:
+      type: string
+  BI_EVIDENCE_DOCUMENT.in.party_id:
+    type: array
+    items:
+      type: string
+  BI_EVIDENCE_DOCUMENT.in.kyc_case_id:
+    type: array
+    items:
+      type: string
+  BI_EVIDENCE_DOCUMENT.in.document_ref:
+    type: array
+    items:
+      type: string
+  BI_EVIDENCE_DOCUMENT.in.captured_at:
+    type: array
+    items:
+      type: string
+  BI_EVIDENCE_DOCUMENT.in.source_record_ref:
+    type: array
+    items:
+      type: string

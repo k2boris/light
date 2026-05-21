@@ -1,0 +1,12 @@
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/config/RuntimeConfig.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/config/RuntimeLogging.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/instance/InstanceEnumerator.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/instance/InstanceKey.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/instance/TargetInstance.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/instance/TargetInstanceFactory.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/jdbc/SourceRegistry.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/mapping/MappingContext.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/mapping/MappingPlan.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/mapping/ReverseMappingContext.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/mapping/ReverseMappingPlan.java
+/Users/bb/devo8/churn-java/blackbox/runtime/java/src/main/java/com/blackbox/runtime/schema/TargetSchemaManager.java

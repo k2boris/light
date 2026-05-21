@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TC_PTY_EXT_REF</Name>
+  <ID>tbl_TC_PTY_EXT_REF</ID>
+  <Columns>
+    <Column name="party_id" id="party_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="external_ref_type" id="external_ref_type" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="external_id" id="external_id" index="2" datatype="TEXT" mandatory="true"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="party_id,external_ref_type,external_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="TC_PTY_EXT_REF" timestamp="2026-03-04">
+      <ColumnsList>party_id,external_ref_type,external_id</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

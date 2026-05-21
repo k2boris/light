@@ -1,0 +1,206 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          product_id:
+            external: product_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: NCC_SYSTEM
+          sql:
+            const: select * from main.NCC_PRODUCT_PARAM_VALUE
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: PopulationArgs/parent_rows
+          luid_column_name:
+            const: select product_id, product_characteristic, param_name, param_value from NCC_SYSTEM.NCC_PRODUCT_PARAM_VALUE
+        out:
+          result:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      Now1:
+        parent: Now
+  Stage 1:
+    actors:
+      JavaScript1:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+              
+                // unwrap 1-element list-ish values
+                try {
+                  if (typeof v !== "string" && v[0] !== undefined) v = v[0];
+                } catch (e) {}
+              
+                return "" + v;
+              }
+              
+              var s_product_id = scalar(product_id);
+              var s_product_characteristic = scalar(product_characteristic);
+              var s_param_name = scalar(param_name);
+              var s_now = scalar(now);
+              var s_param_value = scalar(param_value);
+              
+              self.result = [];
+              
+              if (s_product_id) {
+                self.result.push({
+                  product_id: s_product_id,
+                  value_type: 'product_characteristic:' +  s_now,
+                  name: s_param_name,
+                  value: s_param_value
+                });
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: Query/result
+              iterate: Iterate
+            schema: '#ref'
+            mandatory: false
+          product_id:
+            link: Query/result/product_id
+            schema: '#ref'
+            mandatory: false
+          product_characteristic:
+            link: Query/result/product_characteristic
+            schema: '#ref'
+            mandatory: false
+          param_name:
+            link: Query/result/param_name
+            schema: '#ref'
+            mandatory: false
+          param_value:
+            link: Query/result/param_value
+            schema: '#ref'
+            mandatory: false
+          now:
+            link: Now1/date
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      TC_PROD_CHAR:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - product_id
+              - name
+              - value
+              - value_type
+          keys:
+            const:
+              - product_id
+              - name
+              - value_type
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: JavaScript1/result
+              iterate: Iterate
+          command:
+            const: upsert
+          product_id:
+            link: JavaScript1/result/product_id
+            schema: string
+          name:
+            link: JavaScript1/result/name
+            schema: string
+          value:
+            link: JavaScript1/result/value
+            schema: string
+          value_type:
+            link: JavaScript1/result/value_type
+            schema: string
+  Stage 2: {}
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: string
+        product_characteristic:
+          type: string
+        param_name:
+          type: string
+        param_value:
+          type: string
+  JavaScript1.in.inputs:
+    type: array
+    items:
+      type: object
+  JavaScript1.out.result:
+    type: array
+    items:
+      type: object
+  JavaScript1.in.product_id:
+    type: array
+    items:
+      type: string
+  JavaScript1.in.product_characteristic:
+    type: array
+    items:
+      type: string
+  JavaScript1.in.param_name:
+    type: array
+    items:
+      type: string
+  JavaScript1.in.param_value:
+    type: array
+    items:
+      type: string

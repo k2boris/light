@@ -1,0 +1,221 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        out:
+          parent_rows:
+            schema: '#ref'
+        in:
+          cust_acct_id:
+            external: cust_acct_id
+            schema: any
+            mandatory: false
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Stage 2:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              var pfx = "CA_";
+              
+              self.result = [];
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v && pfx && v.indexOf(pfx) === 0) {
+                    v = v.substring(pfx.length);
+                  }
+                  if (v) self.result.push({ customer_id: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/cust_acct_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: NCC_SYSTEM
+          sql:
+            const: select * from main.NCC_ELIGIBILITY_FLAG
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 3:
+    actors: {}
+  Stage 1:
+    actors:
+      EmitRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try {
+                  if (typeof v !== 'string' && v[0] !== undefined) v = v[0];
+                } catch (e) {}
+                return '' + v;
+              }
+              
+              var s_flag_value = scalar(flag_value);
+              var s_flag_code = scalar(flag_code);
+              var s_effective_dt = scalar(effective_dt);
+              var s_parent_cust_acct_id = scalar(parent_cust_acct_id);
+              
+              self.result = [];
+              
+              if (flag_value) {
+                // EAV_1
+                self.result.push({
+                  cust_acct_id: s_parent_cust_acct_id,
+                  value_type: "NCC_ELIGIBILITY_FLAG",
+                  name: 'flag.' + s_flag_code + '.' + s_effective_dt,
+                  value: s_flag_value
+                });
+              }
+              
+              self.result;
+          flag_value:
+            link:
+              path: Query/result/flag_value
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          flag_code:
+            link:
+              path: Query/result/flag_code
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          effective_dt:
+            link:
+              path: Query/result/effective_dt
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          parent_cust_acct_id:
+            link: PopulationArgs/parent_rows/cust_acct_id
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      TC_CA_CHAR:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - cust_acct_id
+              - value_type
+              - name
+              - value
+          keys:
+            const:
+              - cust_acct_id
+              - name
+              - value
+          dialect:
+            const: sqlite
+          command:
+            const: upsert
+          cust_acct_id:
+            link: EmitRows/result/cust_acct_id
+            schema: string
+          value_type:
+            link: EmitRows/result/value_type
+            schema: string
+          name:
+            link: EmitRows/result/name
+            schema: string
+          value:
+            link: EmitRows/result/value
+            schema: string
+          params:
+            link:
+              path: EmitRows/result
+              iterate: Iterate
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        cust_acct_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        flag_value:
+          type: string
+        flag_code:
+          type: string
+        effective_dt:
+          type: string
+  EmitRows.out.result:
+    type: array
+    items:
+      type: object

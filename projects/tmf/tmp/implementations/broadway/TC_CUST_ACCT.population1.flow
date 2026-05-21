@@ -1,0 +1,193 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        out:
+          parent_rows:
+            schema: '#ref'
+        in:
+          customer_id:
+            external: customer_id
+            schema: any
+            mandatory: false
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Stage 2:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ customer_id: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/customer_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: SIEBEL_SYSTEM
+          sql:
+            const: SELECT * FROM (select * from main.SBL_CUSTOMER) __rowmatch LIMIT 1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+          luid_column_name:
+            const: select customer_id, status from SIEBEL_SYSTEM.SBL_CUSTOMER
+        out:
+          result:
+            schema: '#ref'
+  Stage 3:
+    actors: {}
+  Stage 1:
+    actors:
+      ChangeValue:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              self.result = "CA_" + acc_id;
+          acc_id:
+            link: Query/result/customer_id
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: string
+      Const1:
+        parent: Const
+        in:
+          value:
+            const: consumer
+            schema: string
+        out:
+          value:
+            schema: string
+      Now1:
+        parent: Now
+  LU Table:
+    last: 1
+    actors:
+      TC_CUST_ACCT:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - cust_acct_id
+              - customer_id
+              - account_type
+              - status
+              - created_dt
+          keys:
+            const:
+              - cust_acct_id
+          dialect:
+            const: sqlite
+          cust_acct_id:
+            link: ChangeValue/result
+            schema: string
+          customer_id:
+            link: Query/result/customer_id
+            schema: string
+          account_type:
+            link: Const1/value
+            schema: string
+          status:
+            link: Query/result/status
+            schema: string
+          created_dt:
+            link: Now1/date
+            schema: date
+          params:
+            link:
+              path: Query/result
+              iterate: Iterate
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        status:
+          type: string
+  TC_CUST_ACCT.in.cust_acct_id:
+    type: array
+    items:
+      type: string
+  TC_CUST_ACCT.in.customer_id:
+    type: array
+    items:
+      type: string
+  TC_CUST_ACCT.in.status:
+    type: array
+    items:
+      type: string

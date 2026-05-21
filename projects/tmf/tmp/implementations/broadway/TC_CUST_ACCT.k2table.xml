@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TC_CUST_ACCT</Name>
+  <ID>tbl_TC_CUST_ACCT</ID>
+  <Columns>
+    <Column name="cust_acct_id" id="cust_acct_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="customer_id" id="customer_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="account_type" id="account_type" index="2" datatype="TEXT"/>
+    <Column name="status" id="status" index="3" datatype="TEXT" mandatory="true"/>
+    <Column name="created_dt" id="created_dt" index="4" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="cust_acct_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="TC_CUST_ACCT" timestamp="2026-03-04">
+      <ColumnsList>cust_acct_id,customer_id,account_type,status,created_dt</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

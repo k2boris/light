@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TC_CA_PROD_MAP</Name>
+  <ID>tbl_TC_CA_PROD_MAP</ID>
+  <Columns>
+    <Column name="cust_acct_id" id="cust_acct_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="product_id" id="product_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="rel_type" id="rel_type" index="2" datatype="TEXT" mandatory="true"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="cust_acct_id,product_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="TC_CA_PROD_MAP" timestamp="2026-03-04">
+      <ColumnsList>cust_acct_id,product_id,rel_type</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

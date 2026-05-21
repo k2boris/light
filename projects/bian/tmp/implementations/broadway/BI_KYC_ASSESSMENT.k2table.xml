@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_KYC_ASSESSMENT</Name>
+  <ID>tbl_BI_KYC_ASSESSMENT</ID>
+  <Columns>
+    <Column name="kyc_assessment_id" id="kyc_assessment_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_id" id="party_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="kyc_status" id="kyc_status" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="risk_rating" id="risk_rating" index="3" datatype="TEXT"/>
+    <Column name="risk_score" id="risk_score" index="4" datatype="REAL"/>
+    <Column name="pep_flag" id="pep_flag" index="5" datatype="INTEGER" mandatory="true"/>
+    <Column name="sanctions_flag" id="sanctions_flag" index="6" datatype="INTEGER" mandatory="true"/>
+    <Column name="adverse_media_flag" id="adverse_media_flag" index="7" datatype="INTEGER" mandatory="true"/>
+    <Column name="last_reviewed_at" id="last_reviewed_at" index="8" datatype="TEXT"/>
+    <Column name="next_review_due_at" id="next_review_due_at" index="9" datatype="TEXT"/>
+    <Column name="assessment_reason" id="assessment_reason" index="10" datatype="TEXT"/>
+    <Column name="source_system_id" id="source_system_id" index="11" datatype="TEXT"/>
+    <Column name="source_record_ref" id="source_record_ref" index="12" datatype="TEXT"/>
+    <Column name="created_at" id="created_at" index="13" datatype="TEXT" mandatory="true"/>
+    <Column name="updated_at" id="updated_at" index="14" datatype="TEXT" mandatory="true"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="kyc_assessment_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_KYC_ASSESSMENT" timestamp="2026-03-04">
+      <ColumnsList>kyc_assessment_id,party_id,kyc_status,risk_rating,risk_score,pep_flag,sanctions_flag,adverse_media_flag,last_reviewed_at,next_review_due_at,assessment_reason,source_system_id,source_record_ref,created_at,updated_at</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

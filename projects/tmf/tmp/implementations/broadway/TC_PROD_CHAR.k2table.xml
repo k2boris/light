@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TC_PROD_CHAR</Name>
+  <ID>tbl_TC_PROD_CHAR</ID>
+  <Columns>
+    <Column name="product_id" id="product_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="name" id="name" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="value" id="value" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="value_type" id="value_type" index="3" datatype="TEXT" mandatory="true"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="product_id,name,value_type"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="TC_PROD_CHAR" timestamp="2026-03-04">
+      <ColumnsList>product_id,name,value,value_type</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

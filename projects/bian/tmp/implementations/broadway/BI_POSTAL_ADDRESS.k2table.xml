@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_POSTAL_ADDRESS</Name>
+  <ID>tbl_BI_POSTAL_ADDRESS</ID>
+  <Columns>
+    <Column name="address_id" id="address_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_id" id="party_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="address_type" id="address_type" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="line1" id="line1" index="3" datatype="TEXT"/>
+    <Column name="line2" id="line2" index="4" datatype="TEXT"/>
+    <Column name="city" id="city" index="5" datatype="TEXT"/>
+    <Column name="state_region" id="state_region" index="6" datatype="TEXT"/>
+    <Column name="postal_code" id="postal_code" index="7" datatype="TEXT"/>
+    <Column name="country_code" id="country_code" index="8" datatype="TEXT" mandatory="true"/>
+    <Column name="is_primary" id="is_primary" index="9" datatype="INTEGER" mandatory="true"/>
+    <Column name="valid_from" id="valid_from" index="10" datatype="TEXT"/>
+    <Column name="valid_to" id="valid_to" index="11" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="address_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_POSTAL_ADDRESS" timestamp="2026-03-04">
+      <ColumnsList>address_id,party_id,address_type,line1,line2,city,state_region,postal_code,country_code,is_primary,valid_from,valid_to</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

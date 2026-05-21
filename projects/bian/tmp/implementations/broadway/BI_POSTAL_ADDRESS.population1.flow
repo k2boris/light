@@ -1,0 +1,361 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          party_id:
+            external: party_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        height: 199
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ ROWID_OBJECT: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/party_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      XRefBridge:
+        parent: SourceDbQuery
+        height: 258
+        in:
+          interface:
+            const: MDM_INFA_DS
+          sql:
+            const: 'SELECT SOURCE_KEY AS party_id FROM main.C_XREF_PARTY WHERE SYSTEM_CODE = ''SFDC'''
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 2:
+    actors:
+      QueryJoin:
+        parent: SourceDbQuery
+        height: 229
+        in:
+          interface:
+            const: CRM_SF_DS
+          sql:
+            const: SELECT * FROM (select * from main.sf_address) __rowmatch LIMIT 1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: XRefBridge/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      ProjectRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}
+                return '' + v;
+              }
+              self.result = [];
+              self.result.push({
+                address_id: scalar(address_id),
+                party_id: scalar(parent_party_id),
+                address_type: scalar(address_type),
+                line1: scalar(line1),
+                line2: scalar(line2),
+                city: scalar(city),
+                state_region: scalar(state_region),
+                postal_code: scalar(postal_code),
+                country_code: scalar(country_code),
+                is_primary: scalar(is_primary),
+                valid_from: scalar(valid_from),
+                valid_to: scalar(valid_to)
+              });
+              self.result;
+          parent_party_id:
+            link: PopulationArgs/parent_rows/party_id
+            schema: string
+            mandatory: false
+          address_id:
+            link:
+              path: QueryJoin/result/address_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          party_id:
+            link:
+              path: QueryJoin/result/party_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          address_type:
+            link:
+              path: QueryJoin/result/address_type
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          line1:
+            link:
+              path: QueryJoin/result/line1
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          line2:
+            link:
+              path: QueryJoin/result/line2
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          city:
+            link:
+              path: QueryJoin/result/city
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          state_region:
+            link:
+              path: QueryJoin/result/state_region
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          postal_code:
+            link:
+              path: QueryJoin/result/postal_code
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          country_code:
+            link:
+              path: QueryJoin/result/country_code
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          is_primary:
+            link:
+              path: QueryJoin/result/is_primary
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          valid_from:
+            link:
+              path: QueryJoin/result/valid_from
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          valid_to:
+            link:
+              path: QueryJoin/result/valid_to
+              iterate: Iterate
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      BI_POSTAL_ADDRESS:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - address_id
+              - party_id
+              - address_type
+              - line1
+              - line2
+              - city
+              - state_region
+              - postal_code
+              - country_code
+              - is_primary
+              - valid_from
+              - valid_to
+          keys:
+            const:
+              - address_id
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: ProjectRows/result
+              iterate: Iterate
+          address_id:
+            link: ProjectRows/result/address_id
+            schema: string
+          party_id:
+            link: ProjectRows/result/party_id
+            schema: string
+          address_type:
+            link: ProjectRows/result/address_type
+            schema: string
+          line1:
+            link: ProjectRows/result/line1
+            schema: string
+          line2:
+            link: ProjectRows/result/line2
+            schema: string
+          city:
+            link: ProjectRows/result/city
+            schema: string
+          state_region:
+            link: ProjectRows/result/state_region
+            schema: string
+          postal_code:
+            link: ProjectRows/result/postal_code
+            schema: string
+          country_code:
+            link: ProjectRows/result/country_code
+            schema: string
+          is_primary:
+            link: ProjectRows/result/is_primary
+            schema: string
+          valid_from:
+            link: ProjectRows/result/valid_from
+            schema: string
+          valid_to:
+            link: ProjectRows/result/valid_to
+            schema: string
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        ROWID_OBJECT:
+          type: string
+  QueryJoin.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        address_id:
+          type: string
+        party_id:
+          type: string
+        address_type:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state_region:
+          type: string
+        postal_code:
+          type: string
+        country_code:
+          type: string
+        is_primary:
+          type: string
+        valid_from:
+          type: string
+        valid_to:
+          type: string
+  ProjectRows.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        address_id:
+          type: string
+        party_id:
+          type: string
+        address_type:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state_region:
+          type: string
+        postal_code:
+          type: string
+        country_code:
+          type: string
+        is_primary:
+          type: string
+        valid_from:
+          type: string
+        valid_to:
+          type: string
+  XRefBridge.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string

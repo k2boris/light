@@ -1,0 +1,1916 @@
+{
+  "passed": false,
+  "mode": "case-insensitive-table-column-and-string-values",
+  "goldenDir": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden",
+  "dataDir": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data",
+  "fileCount": 200,
+  "mismatchCount": 33,
+  "results": [
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000001.json",
+      "partyId": "P000001",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000001.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 1,
+          "actualCount": 2,
+          "projectedColumns": [
+            "disposition_id",
+            "screening_hit_id",
+            "disposition_code",
+            "disposition_reason",
+            "decided_by",
+            "notes"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "scr000001|scr000001|review|hit_pep|analyst.kyc|tmns payment screening disposition"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SOURCE_SYSTEM",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 3,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 3
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000002.json",
+      "partyId": "P000002",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000002.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000003.json",
+      "partyId": "P000003",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000003.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_RUN",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 2,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_PARTY_IDENTIFIER",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 2,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_SOURCE_SYSTEM",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 3,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 3
+        },
+        {
+          "table": "BI_SCREENING_HIT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SOURCE_REFERENCE",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 3,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 3
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000004.json",
+      "partyId": "P000004",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000004.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000005.json",
+      "partyId": "P000005",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000005.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000006.json",
+      "partyId": "P000006",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000006.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000007.json",
+      "partyId": "P000007",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000007.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000008.json",
+      "partyId": "P000008",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000008.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_RUN",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 2,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_SCREENING_HIT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000009.json",
+      "partyId": "P000009",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000009.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_RUN",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 2,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_SCREENING_HIT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000010.json",
+      "partyId": "P000010",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000010.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000011.json",
+      "partyId": "P000011",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000011.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_RUN",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 2,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_PARTY_IDENTIFIER",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 2,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_SOURCE_SYSTEM",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 1,
+          "actualCount": 3,
+          "projectedColumns": [
+            "source_system_id",
+            "source_code",
+            "source_name",
+            "source_type",
+            "is_active"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "oracle_aml|oracle_aml|oracle aml|aml|1",
+            "temenos|temenos|temenos core|core|1"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_SCREENING_HIT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000012.json",
+      "partyId": "P000012",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000012.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000013.json",
+      "partyId": "P000013",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000013.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000014.json",
+      "partyId": "P000014",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000014.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000015.json",
+      "partyId": "P000015",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000015.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000016.json",
+      "partyId": "P000016",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000016.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000017.json",
+      "partyId": "P000017",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000017.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000018.json",
+      "partyId": "P000018",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000018.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000019.json",
+      "partyId": "P000019",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000019.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000020.json",
+      "partyId": "P000020",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000020.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000021.json",
+      "partyId": "P000021",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000021.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000022.json",
+      "partyId": "P000022",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000022.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000023.json",
+      "partyId": "P000023",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000023.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000024.json",
+      "partyId": "P000024",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000024.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000025.json",
+      "partyId": "P000025",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000025.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000026.json",
+      "partyId": "P000026",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000026.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000027.json",
+      "partyId": "P000027",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000027.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000028.json",
+      "partyId": "P000028",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000028.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000029.json",
+      "partyId": "P000029",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000029.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000030.json",
+      "partyId": "P000030",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000030.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000031.json",
+      "partyId": "P000031",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000031.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000032.json",
+      "partyId": "P000032",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000032.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000033.json",
+      "partyId": "P000033",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000033.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000034.json",
+      "partyId": "P000034",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000034.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000035.json",
+      "partyId": "P000035",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000035.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000036.json",
+      "partyId": "P000036",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000036.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000037.json",
+      "partyId": "P000037",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000037.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000038.json",
+      "partyId": "P000038",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000038.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000039.json",
+      "partyId": "P000039",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000039.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000040.json",
+      "partyId": "P000040",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000040.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000041.json",
+      "partyId": "P000041",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000041.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000042.json",
+      "partyId": "P000042",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000042.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000043.json",
+      "partyId": "P000043",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000043.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000044.json",
+      "partyId": "P000044",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000044.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000045.json",
+      "partyId": "P000045",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000045.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000046.json",
+      "partyId": "P000046",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000046.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000047.json",
+      "partyId": "P000047",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000047.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000048.json",
+      "partyId": "P000048",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000048.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000049.json",
+      "partyId": "P000049",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000049.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000050.json",
+      "partyId": "P000050",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000050.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000051.json",
+      "partyId": "P000051",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000051.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000052.json",
+      "partyId": "P000052",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000052.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000053.json",
+      "partyId": "P000053",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000053.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000054.json",
+      "partyId": "P000054",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000054.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000055.json",
+      "partyId": "P000055",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000055.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000056.json",
+      "partyId": "P000056",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000056.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000057.json",
+      "partyId": "P000057",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000057.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000058.json",
+      "partyId": "P000058",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000058.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000059.json",
+      "partyId": "P000059",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000059.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000060.json",
+      "partyId": "P000060",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000060.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000061.json",
+      "partyId": "P000061",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000061.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000062.json",
+      "partyId": "P000062",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000062.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000063.json",
+      "partyId": "P000063",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000063.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000064.json",
+      "partyId": "P000064",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000064.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000065.json",
+      "partyId": "P000065",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000065.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_CONTACT_POINT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000066.json",
+      "partyId": "P000066",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000066.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000067.json",
+      "partyId": "P000067",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000067.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000068.json",
+      "partyId": "P000068",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000068.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000069.json",
+      "partyId": "P000069",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000069.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000070.json",
+      "partyId": "P000070",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000070.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000071.json",
+      "partyId": "P000071",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000071.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000072.json",
+      "partyId": "P000072",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000072.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000073.json",
+      "partyId": "P000073",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000073.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000074.json",
+      "partyId": "P000074",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000074.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000075.json",
+      "partyId": "P000075",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000075.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000076.json",
+      "partyId": "P000076",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000076.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000077.json",
+      "partyId": "P000077",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000077.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000078.json",
+      "partyId": "P000078",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000078.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000079.json",
+      "partyId": "P000079",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000079.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000080.json",
+      "partyId": "P000080",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000080.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000081.json",
+      "partyId": "P000081",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000081.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000082.json",
+      "partyId": "P000082",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000082.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000083.json",
+      "partyId": "P000083",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000083.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000084.json",
+      "partyId": "P000084",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000084.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000085.json",
+      "partyId": "P000085",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000085.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000086.json",
+      "partyId": "P000086",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000086.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000087.json",
+      "partyId": "P000087",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000087.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000088.json",
+      "partyId": "P000088",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000088.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SOURCE_SYSTEM",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 3,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 3
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000089.json",
+      "partyId": "P000089",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000089.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SOURCE_SYSTEM",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 3,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 3
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000090.json",
+      "partyId": "P000090",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000090.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000091.json",
+      "partyId": "P000091",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000091.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000092.json",
+      "partyId": "P000092",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000092.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000093.json",
+      "partyId": "P000093",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000093.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000094.json",
+      "partyId": "P000094",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000094.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000095.json",
+      "partyId": "P000095",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000095.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000096.json",
+      "partyId": "P000096",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000096.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000097.json",
+      "partyId": "P000097",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000097.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_RUN",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 1,
+          "actualCount": 2,
+          "projectedColumns": [
+            "screening_run_id",
+            "party_id",
+            "run_type",
+            "trigger_reason",
+            "status_code",
+            "source_system_id",
+            "source_record_ref"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "scr000097|p000097|realtime|event|completed|tmns-core|scr000097"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_HIT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000098.json",
+      "partyId": "P000098",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000098.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 2,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            "",
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        },
+        {
+          "table": "BI_SCREENING_RUN",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 1,
+          "actualCount": 2,
+          "projectedColumns": [
+            "screening_run_id",
+            "party_id",
+            "run_type",
+            "trigger_reason",
+            "status_code",
+            "source_system_id",
+            "source_record_ref"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "scr000098|p000098|realtime|event|completed|tmns-core|scr000098"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_HIT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 1,
+          "actualCount": 3,
+          "projectedColumns": [
+            "screening_hit_id",
+            "screening_run_id",
+            "hit_type",
+            "provider_code",
+            "provider_entity_id",
+            "provider_listing_id",
+            "matched_name",
+            "match_score",
+            "hit_status"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "match000098:2|run000098|watchlist|dowjones|djent000035|djlst000035|dj_entity:djent000035|listing:djlst000035|0.977|open",
+            "scr000098|scr000098|watchlist|tmns-core|ft000098|scr000098|hit_pep|69.83|open"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 2
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000099.json",
+      "partyId": "P000099",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000099.db",
+      "passed": false,
+      "mismatches": [
+        {
+          "table": "BI_SCREENING_DISPOSITION",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_RUN",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 1,
+          "actualCount": 2,
+          "projectedColumns": [
+            "screening_run_id",
+            "party_id",
+            "run_type",
+            "trigger_reason",
+            "status_code",
+            "source_system_id",
+            "source_record_ref"
+          ],
+          "missingRows": [],
+          "unexpectedRows": [
+            "scr000099|p000099|realtime|event|completed|tmns-core|scr000099"
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        },
+        {
+          "table": "BI_SCREENING_HIT",
+          "reason": "row_multiset_mismatch",
+          "expectedCount": 0,
+          "actualCount": 1,
+          "projectedColumns": [],
+          "missingRows": [],
+          "unexpectedRows": [
+            ""
+          ],
+          "missingRowCount": 0,
+          "unexpectedRowCount": 1
+        }
+      ]
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000100.json",
+      "partyId": "P000100",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000100.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000101.json",
+      "partyId": "P000101",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000101.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000102.json",
+      "partyId": "P000102",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000102.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000103.json",
+      "partyId": "P000103",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000103.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000104.json",
+      "partyId": "P000104",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000104.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000105.json",
+      "partyId": "P000105",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000105.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000106.json",
+      "partyId": "P000106",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000106.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000107.json",
+      "partyId": "P000107",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000107.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000108.json",
+      "partyId": "P000108",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000108.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000109.json",
+      "partyId": "P000109",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000109.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000110.json",
+      "partyId": "P000110",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000110.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000111.json",
+      "partyId": "P000111",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000111.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000112.json",
+      "partyId": "P000112",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000112.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000113.json",
+      "partyId": "P000113",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000113.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000114.json",
+      "partyId": "P000114",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000114.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000115.json",
+      "partyId": "P000115",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000115.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000116.json",
+      "partyId": "P000116",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000116.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000117.json",
+      "partyId": "P000117",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000117.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000118.json",
+      "partyId": "P000118",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000118.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000119.json",
+      "partyId": "P000119",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000119.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000120.json",
+      "partyId": "P000120",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000120.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000121.json",
+      "partyId": "P000121",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000121.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000122.json",
+      "partyId": "P000122",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000122.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000123.json",
+      "partyId": "P000123",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000123.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000124.json",
+      "partyId": "P000124",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000124.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000125.json",
+      "partyId": "P000125",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000125.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000126.json",
+      "partyId": "P000126",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000126.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000127.json",
+      "partyId": "P000127",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000127.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000128.json",
+      "partyId": "P000128",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000128.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000129.json",
+      "partyId": "P000129",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000129.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000130.json",
+      "partyId": "P000130",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000130.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000131.json",
+      "partyId": "P000131",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000131.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000132.json",
+      "partyId": "P000132",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000132.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000133.json",
+      "partyId": "P000133",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000133.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000134.json",
+      "partyId": "P000134",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000134.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000135.json",
+      "partyId": "P000135",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000135.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000136.json",
+      "partyId": "P000136",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000136.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000137.json",
+      "partyId": "P000137",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000137.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000138.json",
+      "partyId": "P000138",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000138.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000139.json",
+      "partyId": "P000139",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000139.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000140.json",
+      "partyId": "P000140",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000140.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000141.json",
+      "partyId": "P000141",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000141.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000142.json",
+      "partyId": "P000142",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000142.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000143.json",
+      "partyId": "P000143",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000143.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000144.json",
+      "partyId": "P000144",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000144.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000145.json",
+      "partyId": "P000145",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000145.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000146.json",
+      "partyId": "P000146",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000146.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000147.json",
+      "partyId": "P000147",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000147.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000148.json",
+      "partyId": "P000148",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000148.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000149.json",
+      "partyId": "P000149",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000149.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000150.json",
+      "partyId": "P000150",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000150.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000151.json",
+      "partyId": "P000151",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000151.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000152.json",
+      "partyId": "P000152",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000152.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000153.json",
+      "partyId": "P000153",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000153.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000154.json",
+      "partyId": "P000154",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000154.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000155.json",
+      "partyId": "P000155",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000155.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000156.json",
+      "partyId": "P000156",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000156.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000157.json",
+      "partyId": "P000157",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000157.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000158.json",
+      "partyId": "P000158",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000158.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000159.json",
+      "partyId": "P000159",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000159.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000160.json",
+      "partyId": "P000160",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000160.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000161.json",
+      "partyId": "P000161",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000161.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000162.json",
+      "partyId": "P000162",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000162.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000163.json",
+      "partyId": "P000163",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000163.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000164.json",
+      "partyId": "P000164",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000164.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000165.json",
+      "partyId": "P000165",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000165.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000166.json",
+      "partyId": "P000166",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000166.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000167.json",
+      "partyId": "P000167",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000167.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000168.json",
+      "partyId": "P000168",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000168.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000169.json",
+      "partyId": "P000169",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000169.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000170.json",
+      "partyId": "P000170",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000170.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000171.json",
+      "partyId": "P000171",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000171.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000172.json",
+      "partyId": "P000172",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000172.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000173.json",
+      "partyId": "P000173",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000173.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000174.json",
+      "partyId": "P000174",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000174.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000175.json",
+      "partyId": "P000175",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000175.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000176.json",
+      "partyId": "P000176",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000176.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000177.json",
+      "partyId": "P000177",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000177.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000178.json",
+      "partyId": "P000178",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000178.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000179.json",
+      "partyId": "P000179",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000179.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000180.json",
+      "partyId": "P000180",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000180.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000181.json",
+      "partyId": "P000181",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000181.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000182.json",
+      "partyId": "P000182",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000182.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000183.json",
+      "partyId": "P000183",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000183.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000184.json",
+      "partyId": "P000184",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000184.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000185.json",
+      "partyId": "P000185",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000185.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000186.json",
+      "partyId": "P000186",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000186.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000187.json",
+      "partyId": "P000187",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000187.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000188.json",
+      "partyId": "P000188",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000188.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000189.json",
+      "partyId": "P000189",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000189.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000190.json",
+      "partyId": "P000190",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000190.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000191.json",
+      "partyId": "P000191",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000191.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000192.json",
+      "partyId": "P000192",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000192.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000193.json",
+      "partyId": "P000193",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000193.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000194.json",
+      "partyId": "P000194",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000194.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000195.json",
+      "partyId": "P000195",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000195.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000196.json",
+      "partyId": "P000196",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000196.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000197.json",
+      "partyId": "P000197",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000197.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000198.json",
+      "partyId": "P000198",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000198.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000199.json",
+      "partyId": "P000199",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000199.db",
+      "passed": true,
+      "mismatches": []
+    },
+    {
+      "file": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tests/golden/response_P000200.json",
+      "partyId": "P000200",
+      "db": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/data/BI_PARTY_P000200.db",
+      "passed": true,
+      "mismatches": []
+    }
+  ]
+}

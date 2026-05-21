@@ -1,0 +1,39 @@
+"""Auto-generated Python implementation stub.
+
+Plan: KYC_REQUIREMENT_ITEM__CRM_SF_DS__sf_consent
+Template: TPL_COLUMNS_PARENT_SCOPED
+Module hint: pipelines.tpl_snapshot_1to1_parent_scoped
+"""
+
+from __future__ import annotations
+
+from typing import Any, Dict
+
+
+DEFAULT_ARGS: Dict[str, Any] = {
+  "mode": "batch",
+  "target_table": "BI_KYC_REQUIREMENT_ITEM",
+  "source_system": "CRM_SF_DS",
+  "source_table": "sf_consent",
+  "source_interface": "CRM_SF_DS",
+  "driver_key": "kyc_case_id",
+  "target_fields": [
+    "requirement_item_id",
+    "kyc_case_id",
+    "requirement_type",
+    "status_code",
+    "verified_at",
+    "source_system_id",
+    "source_record_ref"
+  ]
+}
+
+
+def run(context: Dict[str, Any]) -> Dict[str, Any]:
+    """Concrete implementation entrypoint for this execution plan."""
+    return {
+        "plan_id": "KYC_REQUIREMENT_ITEM__CRM_SF_DS__sf_consent",
+        "status": "not_implemented",
+        "context": context,
+        "default_args": DEFAULT_ARGS,
+    }

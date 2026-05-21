@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "comparedRows": 5085,
+  "mismatchCount": 0,
+  "reverseSiebel": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/reverse-sources/siebel.db",
+  "reverseBscs": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/reverse-sources/bscs.db",
+  "reverseNcc": "/Users/bb/devo8/churn-java/blackbox/projects/tmf/tmp/java-runtime/reverse-sources/ncc.db",
+  "mismatches": [
+  ]
+}

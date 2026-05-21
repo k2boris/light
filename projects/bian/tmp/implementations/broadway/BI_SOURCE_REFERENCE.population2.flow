@@ -1,0 +1,213 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        out:
+          parent_rows:
+            schema: '#ref'
+        in:
+          party_id:
+            external: party_id
+            schema: any
+            mandatory: false
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Stage 2:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ ROWID_OBJECT: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/party_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: MDM_INFA_DS
+          sql:
+            const: select * from main.C_XREF_PARTY
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+          luid_column_name:
+            const: select ROWID_XREF, ROWID_OBJECT, SYSTEM_CODE, SOURCE_ENTITY, SOURCE_KEY, BEST_REC_IND, CREATED_DT from MDM_INFA_DS.C_XREF_PARTY
+        out:
+          result:
+            schema: '#ref'
+  Stage 3:
+    actors: {}
+  Stage 1:
+    actors: {}
+  LU Table:
+    last: 1
+    actors:
+      BI_SOURCE_REFERENCE:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - source_reference_id
+              - party_id
+              - source_system_id
+              - source_entity
+              - source_key
+              - is_primary_in_source
+              - effective_from
+              - created_at
+          keys:
+            const:
+              - source_reference_id
+          dialect:
+            const: sqlite
+          command:
+            const: upsert
+          source_reference_id:
+            link: Query/result/ROWID_XREF
+            schema: string
+          party_id:
+            link: Query/result/ROWID_OBJECT
+            schema: string
+          source_system_id:
+            link: Query/result/SYSTEM_CODE
+            schema: string
+          source_entity:
+            link: Query/result/SOURCE_ENTITY
+            schema: string
+          source_key:
+            link: Query/result/SOURCE_KEY
+            schema: string
+          is_primary_in_source:
+            link: Query/result/BEST_REC_IND
+            schema: string
+          effective_from:
+            link: Query/result/CREATED_DT
+            schema: string
+          created_at:
+            link: Query/result/CREATED_DT
+            schema: string
+          params:
+            link:
+              path: Query/result
+              iterate: Iterate
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        ROWID_OBJECT:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        ROWID_XREF:
+          type: string
+        ROWID_OBJECT:
+          type: string
+        SYSTEM_CODE:
+          type: string
+        SOURCE_ENTITY:
+          type: string
+        SOURCE_KEY:
+          type: string
+        BEST_REC_IND:
+          type: string
+        CREATED_DT:
+          type: string
+  BI_SOURCE_REFERENCE.in.source_reference_id:
+    type: array
+    items:
+      type: string
+  BI_SOURCE_REFERENCE.in.party_id:
+    type: array
+    items:
+      type: string
+  BI_SOURCE_REFERENCE.in.source_system_id:
+    type: array
+    items:
+      type: string
+  BI_SOURCE_REFERENCE.in.source_entity:
+    type: array
+    items:
+      type: string
+  BI_SOURCE_REFERENCE.in.source_key:
+    type: array
+    items:
+      type: string
+  BI_SOURCE_REFERENCE.in.is_primary_in_source:
+    type: array
+    items:
+      type: string
+  BI_SOURCE_REFERENCE.in.effective_from:
+    type: array
+    items:
+      type: string
+  BI_SOURCE_REFERENCE.in.created_at:
+    type: array
+    items:
+      type: string

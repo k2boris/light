@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_KYC_CASE</Name>
+  <ID>tbl_BI_KYC_CASE</ID>
+  <Columns>
+    <Column name="kyc_case_id" id="kyc_case_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_id" id="party_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="case_type" id="case_type" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="status_code" id="status_code" index="3" datatype="TEXT" mandatory="true"/>
+    <Column name="priority_code" id="priority_code" index="4" datatype="TEXT" mandatory="true"/>
+    <Column name="opened_at" id="opened_at" index="5" datatype="TEXT" mandatory="true"/>
+    <Column name="closed_at" id="closed_at" index="6" datatype="TEXT"/>
+    <Column name="assigned_to" id="assigned_to" index="7" datatype="TEXT"/>
+    <Column name="outcome_code" id="outcome_code" index="8" datatype="TEXT"/>
+    <Column name="outcome_notes" id="outcome_notes" index="9" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="kyc_case_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_KYC_CASE" timestamp="2026-03-04">
+      <ColumnsList>kyc_case_id,party_id,case_type,status_code,priority_code,opened_at,closed_at,assigned_to,outcome_code,outcome_notes</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_SOURCE_REFERENCE</Name>
+  <ID>tbl_BI_SOURCE_REFERENCE</ID>
+  <Columns>
+    <Column name="source_reference_id" id="source_reference_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_id" id="party_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="source_system_id" id="source_system_id" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="source_entity" id="source_entity" index="3" datatype="TEXT" mandatory="true"/>
+    <Column name="source_key" id="source_key" index="4" datatype="TEXT" mandatory="true"/>
+    <Column name="is_primary_in_source" id="is_primary_in_source" index="5" datatype="INTEGER" mandatory="true"/>
+    <Column name="effective_from" id="effective_from" index="6" datatype="TEXT"/>
+    <Column name="effective_to" id="effective_to" index="7" datatype="TEXT"/>
+    <Column name="created_at" id="created_at" index="8" datatype="TEXT" mandatory="true"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="source_reference_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_SOURCE_REFERENCE" timestamp="2026-03-04">
+      <ColumnsList>source_reference_id,party_id,source_system_id,source_entity,source_key,is_primary_in_source,effective_from,effective_to,created_at</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

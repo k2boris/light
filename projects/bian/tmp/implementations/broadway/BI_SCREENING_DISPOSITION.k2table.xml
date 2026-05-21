@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_SCREENING_DISPOSITION</Name>
+  <ID>tbl_BI_SCREENING_DISPOSITION</ID>
+  <Columns>
+    <Column name="disposition_id" id="disposition_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="screening_hit_id" id="screening_hit_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="disposition_code" id="disposition_code" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="disposition_reason" id="disposition_reason" index="3" datatype="TEXT"/>
+    <Column name="decided_by" id="decided_by" index="4" datatype="TEXT"/>
+    <Column name="decided_at" id="decided_at" index="5" datatype="TEXT" mandatory="true"/>
+    <Column name="notes" id="notes" index="6" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="disposition_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_SCREENING_DISPOSITION" timestamp="2026-03-04">
+      <ColumnsList>disposition_id,screening_hit_id,disposition_code,disposition_reason,decided_by,decided_at,notes</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

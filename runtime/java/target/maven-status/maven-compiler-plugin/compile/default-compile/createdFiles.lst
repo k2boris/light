@@ -1,0 +1,12 @@
+com/blackbox/runtime/mapping/MappingContext.class
+com/blackbox/runtime/instance/TargetInstance.class
+com/blackbox/runtime/mapping/MappingPlan.class
+com/blackbox/runtime/instance/TargetInstanceFactory.class
+com/blackbox/runtime/mapping/ReverseMappingPlan.class
+com/blackbox/runtime/config/RuntimeConfig.class
+com/blackbox/runtime/instance/InstanceEnumerator.class
+com/blackbox/runtime/mapping/ReverseMappingContext.class
+com/blackbox/runtime/schema/TargetSchemaManager.class
+com/blackbox/runtime/config/RuntimeLogging.class
+com/blackbox/runtime/jdbc/SourceRegistry.class
+com/blackbox/runtime/instance/InstanceKey.class

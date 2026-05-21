@@ -1,0 +1,12 @@
+name: bian
+spec: spec/full_spec_v4_1_style_bian.xlsx
+canonical_ddl: metadata/BIAN-Canonical-ddl.sql
+source_ddls:
+  DOWJONES_DS: metadata/DOWJONES-ddl.sql
+  MDM_INFA_DS: metadata/MDM-INFA-ddl.sql
+  AML_ORA_DS: metadata/ORA-AML-ddl.sql
+  CRM_SF_DS: metadata/SF-CRM-ddl.sql
+  CORE_TMNS_DS: metadata/TMNS-core-ddl.sql
+out_ir: tmp/ir.json
+out_report: reports/validation_report.json
+out_implementations: tmp/implementations

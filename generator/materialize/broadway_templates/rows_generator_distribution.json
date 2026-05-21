@@ -1,0 +1,7 @@
+{
+  "distribution": "uniform",
+  "round": true,
+  "type": "integer",
+  "minimum": 0,
+  "maximum": 10
+}

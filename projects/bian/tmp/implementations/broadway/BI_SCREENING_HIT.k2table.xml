@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_SCREENING_HIT</Name>
+  <ID>tbl_BI_SCREENING_HIT</ID>
+  <Columns>
+    <Column name="screening_hit_id" id="screening_hit_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="screening_run_id" id="screening_run_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="hit_type" id="hit_type" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="provider_code" id="provider_code" index="3" datatype="TEXT"/>
+    <Column name="provider_entity_id" id="provider_entity_id" index="4" datatype="TEXT"/>
+    <Column name="provider_listing_id" id="provider_listing_id" index="5" datatype="TEXT"/>
+    <Column name="matched_name" id="matched_name" index="6" datatype="TEXT"/>
+    <Column name="match_score" id="match_score" index="7" datatype="REAL"/>
+    <Column name="hit_status" id="hit_status" index="8" datatype="TEXT" mandatory="true"/>
+    <Column name="created_at" id="created_at" index="9" datatype="TEXT" mandatory="true"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="screening_hit_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_SCREENING_HIT" timestamp="2026-03-04">
+      <ColumnsList>screening_hit_id,screening_run_id,hit_type,provider_code,provider_entity_id,provider_listing_id,matched_name,match_score,hit_status,created_at</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

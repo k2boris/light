@@ -1,0 +1,125 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          product_id:
+            external: product_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: NCC_SYSTEM
+          sql:
+            const: select * from main.NCC_PRODUCT
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: PopulationArgs/parent_rows
+          luid_column_name:
+            const: select product_id, status, start_dt, end_dt, offering_id from NCC_SYSTEM.NCC_PRODUCT
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      Now1:
+        parent: Now
+  LU Table:
+    last: 1
+    actors:
+      TC_PRODUCT:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - product_id
+              - status
+              - start_date
+              - termination_date
+              - product_offering_id
+              - created_dt
+          keys:
+            const:
+              - product_id
+              - start_date
+          dialect:
+            const: sqlite
+          command:
+            const: upsert
+          product_id:
+            link: Query/result/product_id
+            schema: string
+          status:
+            link: Query/result/status
+            schema: string
+          start_date:
+            link: Query/result/start_dt
+            schema: string
+          termination_date:
+            link: Query/result/end_dt
+            schema: string
+          product_offering_id:
+            link: Query/result/offering_id
+            schema: string
+          created_dt:
+            link: Now1/date
+            schema: string
+          params:
+            link:
+              path: Query/result
+              iterate: Iterate
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: string
+        status:
+          type: string
+        start_dt:
+          type: string
+        end_dt:
+          type: string
+        offering_id:
+          type: string

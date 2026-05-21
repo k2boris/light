@@ -1,0 +1,315 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          screening_run_id:
+            external: screening_run_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        height: 199
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ run_id: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/screening_run_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors: {}
+  Stage 2:
+    actors:
+      QueryJoin:
+        parent: SourceDbQuery
+        height: 229
+        in:
+          interface:
+            const: AML_ORA_DS
+          sql:
+            const: |-
+              SELECT DISTINCT
+                  t1.match_id AS match_id,
+                  t2.run_id AS run_id,
+                  t1.match_status AS match_status,
+                  t1.list_id AS list_id,
+                  t1.matched_name AS matched_name,
+                  t1.match_score AS match_score,
+                  t1.created_at AS created_at
+              FROM aml_screening_match t1
+              JOIN aml_screening_subject t2 ON t1.subject_id = t2.subject_id
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      ProjectRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}
+                return '' + v;
+              }
+              var s_parent_screening_run_id = scalar(parent_screening_run_id);
+              var s_match_id = scalar(match_id);
+              var s_match_status = scalar(match_status);
+              var s_list_id = scalar(list_id);
+              var s_matched_name = scalar(matched_name);
+              var s_match_score = scalar(match_score);
+              var s_created_at = scalar(created_at);
+              self.result = [];
+              if (match_id) {
+                self.result.push({
+                  screening_run_id: s_parent_screening_run_id,
+                  screening_hit_id: s_match_id,
+                  hit_type: s_match_status,
+                  provider_code: "ORA-AML",
+                  provider_entity_id: s_list_id,
+                  provider_listing_id: s_list_id,
+                  matched_name: s_matched_name,
+                  match_score: s_match_score,
+                  hit_status: "OPEN",
+                  created_at: s_created_at
+                });
+              }
+              if (matched_name && matched_name.indexOf(':')>=0 && matched_name.lastIndexOf(':')>matched_name.indexOf('|')) {
+                self.result.push({
+                  screening_run_id: s_parent_screening_run_id,
+                  screening_hit_id: match_id + ':2',
+                  hit_type: "WATCHLIST",
+                  provider_code: "DOWJONES",
+                  provider_entity_id: (matched_name && matched_name.indexOf(':')>=0 && matched_name.indexOf('|')>matched_name.indexOf(':')) ? matched_name.substring(matched_name.indexOf(':')+1, matched_name.indexOf('|')) : null,
+                  provider_listing_id: (matched_name && matched_name.lastIndexOf(':')>matched_name.indexOf('|')) ? matched_name.substring(matched_name.lastIndexOf(':')+1) : null,
+                  matched_name: s_matched_name,
+                  match_score: s_match_score,
+                  hit_status: "OPEN",
+                  created_at: s_created_at
+                });
+              }
+              self.result;
+          parent_screening_run_id:
+            link: PopulationArgs/parent_rows/screening_run_id
+            schema: string
+            mandatory: false
+          match_id:
+            link:
+              path: QueryJoin/result/match_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          run_id:
+            link:
+              path: QueryJoin/result/run_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          match_status:
+            link:
+              path: QueryJoin/result/match_status
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          list_id:
+            link:
+              path: QueryJoin/result/list_id
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          matched_name:
+            link:
+              path: QueryJoin/result/matched_name
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          match_score:
+            link:
+              path: QueryJoin/result/match_score
+              iterate: Iterate
+            schema: string
+            mandatory: false
+          created_at:
+            link:
+              path: QueryJoin/result/created_at
+              iterate: Iterate
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      BI_SCREENING_HIT:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - screening_run_id
+              - screening_hit_id
+              - hit_type
+              - provider_code
+              - provider_entity_id
+              - provider_listing_id
+              - matched_name
+              - match_score
+              - hit_status
+              - created_at
+          keys:
+            const:
+              - screening_hit_id
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: ProjectRows/result
+              iterate: Iterate
+          command:
+            const: upsert
+          screening_run_id:
+            link: ProjectRows/result/screening_run_id
+            schema: string
+          screening_hit_id:
+            link: ProjectRows/result/screening_hit_id
+            schema: string
+          hit_type:
+            link: ProjectRows/result/hit_type
+            schema: string
+          provider_code:
+            link: ProjectRows/result/provider_code
+            schema: string
+          provider_entity_id:
+            link: ProjectRows/result/provider_entity_id
+            schema: string
+          provider_listing_id:
+            link: ProjectRows/result/provider_listing_id
+            schema: string
+          matched_name:
+            link: ProjectRows/result/matched_name
+            schema: string
+          match_score:
+            link: ProjectRows/result/match_score
+            schema: string
+          hit_status:
+            link: ProjectRows/result/hit_status
+            schema: string
+          created_at:
+            link: ProjectRows/result/created_at
+            schema: string
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        screening_run_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+      properties:
+        screening_run_id:
+          type: string
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        run_id:
+          type: string
+  QueryJoin.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        match_id:
+          type: string
+        run_id:
+          type: string
+        match_status:
+          type: string
+        list_id:
+          type: string
+        matched_name:
+          type: string
+        match_score:
+          type: string
+        created_at:
+          type: string
+  ProjectRows.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        screening_run_id:
+          type: string
+        screening_hit_id:
+          type: string
+        hit_type:
+          type: string
+        provider_code:
+          type: string
+        provider_entity_id:
+          type: string
+        provider_listing_id:
+          type: string
+        matched_name:
+          type: string
+        match_score:
+          type: string
+        hit_status:
+          type: string
+        created_at:
+          type: string

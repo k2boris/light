@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>TC_PRODUCT</Name>
+  <ID>tbl_TC_PRODUCT</ID>
+  <Columns>
+    <Column name="product_id" id="product_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="status" id="status" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="start_date" id="start_date" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="termination_date" id="termination_date" index="3" datatype="TEXT"/>
+    <Column name="product_offering_id" id="product_offering_id" index="4" datatype="TEXT"/>
+    <Column name="created_dt" id="created_dt" index="5" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="product_id,start_date"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="TC_PRODUCT" timestamp="2026-03-04">
+      <ColumnsList>product_id,status,start_date,termination_date,product_offering_id,created_dt</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

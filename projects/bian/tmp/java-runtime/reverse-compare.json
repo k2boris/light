@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "mode": "mapped-column-equivalence",
+  "targetDbCount": 200,
+  "reverseDir": "/Users/bb/devo8/churn-java/blackbox/projects/bian/tmp/java-runtime/reverse-sources",
+  "reverseDbs": ["AML_ORA_DS.db", "CORE_TMNS_DS.db", "CRM_SF_DS.db", "DOWJONES_DS.db", "MDM_INFA_DS.db"],
+  "comparedPlans": 26,
+  "comparedRows": 5211,
+  "mismatchCount": 0,
+  "mismatches": [
+
+  ]
+}

@@ -1,0 +1,213 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        in:
+          source_system_id:
+            external: source_system_id
+            schema: any
+            mandatory: false
+        out:
+          parent_rows:
+            schema: '#ref'
+  Stage 3:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        height: 199
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ SYSTEM_CODE: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/source_system_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors: {}
+  Stage 2:
+    actors:
+      QueryJoin:
+        parent: SourceDbQuery
+        height: 229
+        in:
+          interface:
+            const: MDM_INFA_DS
+          sql:
+            const: |-
+              SELECT DISTINCT
+                  t1.SYSTEM_CODE AS SYSTEM_CODE
+              FROM C_XREF_PARTY t1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+        out:
+          result:
+            schema: '#ref'
+  Stage 1:
+    actors:
+      Now1:
+        parent: Now
+      ProjectRows:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              function scalar(v) {
+                if (v === null || v === undefined) return null;
+                try { if (typeof v !== 'string' && v[0] !== undefined) v = v[0]; } catch (e) {}
+                return '' + v;
+              }
+              self.result = [];
+              self.result.push({
+                source_system_id: scalar(SYSTEM_CODE),
+                source_code: scalar(SYSTEM_CODE),
+                source_name: scalar(SYSTEM_CODE)=='SFDC'?'Salesforce CRM':scalar(SYSTEM_CODE)=='TEMENOS'?'Temenos Core':scalar(SYSTEM_CODE)=='ORACLE_AML'?'Oracle AML':scalar(SYSTEM_CODE)=='ORA-AML'?'Oracle AML':scalar(SYSTEM_CODE)=='MDM'?'Informatica MDM':scalar(SYSTEM_CODE)=='DJ'?'Dow Jones Feed':scalar(SYSTEM_CODE)=='DOWJONES'?'Dow Jones Feed':scalar(SYSTEM_CODE),
+                source_type: scalar(SYSTEM_CODE)=='SFDC'?'CRM':scalar(SYSTEM_CODE)=='TEMENOS'?'CORE':scalar(SYSTEM_CODE)=='ORACLE_AML'?'AML':scalar(SYSTEM_CODE)=='ORA-AML'?'AML':scalar(SYSTEM_CODE)=='MDM'?'MDM':scalar(SYSTEM_CODE)=='DJ'?'WATCHLIST':scalar(SYSTEM_CODE)=='DOWJONES'?'WATCHLIST':'OTHER',
+                is_active: "1",
+                created_at: scalar(now)
+              });
+              self.result;
+          parent_source_system_id:
+            link: PopulationArgs/parent_rows/source_system_id
+            schema: string
+            mandatory: false
+          now:
+            link: Now1/date
+            schema: string
+            mandatory: false
+          SYSTEM_CODE:
+            link:
+              path: QueryJoin/result/SYSTEM_CODE
+              iterate: Iterate
+            schema: string
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  LU Table:
+    last: 1
+    actors:
+      BI_SOURCE_SYSTEM:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - source_system_id
+              - source_code
+              - source_name
+              - source_type
+              - is_active
+              - created_at
+          keys:
+            const:
+              - source_system_id
+          dialect:
+            const: sqlite
+          params:
+            link:
+              path: ProjectRows/result
+              iterate: Iterate
+          source_system_id:
+            link: ProjectRows/result/source_system_id
+            schema: string
+          source_code:
+            link: ProjectRows/result/source_code
+            schema: string
+          source_name:
+            link: ProjectRows/result/source_name
+            schema: string
+          source_type:
+            link: ProjectRows/result/source_type
+            schema: string
+          is_active:
+            link: ProjectRows/result/is_active
+            schema: string
+          created_at:
+            link: ProjectRows/result/created_at
+            schema: string
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        source_system_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+      properties:
+        source_system_id:
+          type: string
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        SYSTEM_CODE:
+          type: string
+  QueryJoin.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        SYSTEM_CODE:
+          type: string
+  ProjectRows.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        source_system_id:
+          type: string
+        source_code:
+          type: string
+        source_name:
+          type: string
+        source_type:
+          type: string
+        is_active:
+          type: string
+        created_at:
+          type: string

@@ -1,0 +1,195 @@
+stages:
+  Input:
+    actors:
+      PopulationArgs:
+        parent: PopulationArgs
+        readonly: true
+        out:
+          parent_rows:
+            schema: '#ref'
+        in:
+          party_id:
+            external: party_id
+            schema: any
+            mandatory: false
+      SyncDeleteMode:
+        parent: SyncDeleteMode
+        in:
+          interface:
+            schema: any
+          table:
+            const: null
+            external: table
+  Stage 2:
+    actors:
+      RenameAndChangeValue:
+        parent: JavaScript
+        in:
+          script:
+            const: |-
+              self.result = [];
+              
+              var s = "";
+              if (inputs !== null && inputs !== undefined) {
+                s = "" + inputs;
+              }
+              
+              s = s.trim().replace(/^\[/, "").replace(/\]$/, "");
+              
+              if (s) {
+                var parts = s.split(",");
+                for (var i = 0; i < parts.length; i++) {
+                  var v = parts[i].trim().replace(/^\[/, "").replace(/\]$/, "");
+                  if (v) self.result.push({ party_id: v });
+                }
+              }
+              
+              self.result;
+          inputs:
+            link:
+              path: PopulationArgs/parent_rows/party_id
+              pos: 0
+            schema: '#ref'
+            mandatory: false
+        out:
+          result:
+            schema: '#ref'
+  Source:
+    actors:
+      Query:
+        parent: SourceDbQuery
+        in:
+          interface:
+            const: SIEBEL_SYSTEM
+          sql:
+            const: SELECT * FROM (select * from main.SBL_CUSTOMER) __rowmatch LIMIT 1
+          rowsGeneratorDistribution:
+            const:
+              distribution: uniform
+              round: true
+              type: integer
+              minimum: 0
+              maximum: 10
+          parent_rows:
+            link: RenameAndChangeValue/result
+          luid_column_name:
+            const: select party_id, status, first_name, last_name from SIEBEL_SYSTEM.SBL_CUSTOMER
+        out:
+          result:
+            schema: '#ref'
+  Stage 3:
+    actors: {}
+  Stage 1:
+    actors:
+      Const1:
+        parent: Const
+        in:
+          value:
+            const: Individual
+            schema: string
+        out:
+          value:
+            schema: string
+      Now1:
+        parent: Now
+  LU Table:
+    last: 1
+    actors:
+      TC_PARTY:
+        parent: DbLoad
+        in:
+          interface:
+            const: fabric
+          schema:
+            const: null
+            external: schema
+          table:
+            const: null
+            external: table
+          fields:
+            const:
+              - party_id
+              - party_type
+              - status
+              - given_name
+              - family_name
+              - org_name
+              - created_dt
+          keys:
+            const:
+              - party_id
+          dialect:
+            const: sqlite
+          party_id:
+            link: Query/result/party_id
+            schema: string
+          party_type:
+            link: Const1/value
+            schema: string
+          status:
+            link: Query/result/status
+            schema: string
+          given_name:
+            link: Query/result/first_name
+            schema: string
+          family_name:
+            link: Query/result/last_name
+            schema: string
+          org_name:
+            schema: any
+          created_dt:
+            link: Now1/date
+            schema: date
+          params:
+            link:
+              path: Query/result
+              iterate: Iterate
+  Post Load: {}
+schemas:
+  PopulationArgs.out.parent_rows:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  RenameAndChangeValue.in.inputs:
+    type: array
+    items:
+      type: object
+  RenameAndChangeValue.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+  Query.out.result:
+    type: array
+    items:
+      type: object
+      properties:
+        party_id:
+          type: string
+        status:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+  TC_PARTY.in.party_id:
+    type: array
+    items:
+      type: string
+  TC_PARTY.in.status:
+    type: array
+    items:
+      type: string
+  TC_PARTY.in.given_name:
+    type: array
+    items:
+      type: string
+  TC_PARTY.in.family_name:
+    type: array
+    items:
+      type: string

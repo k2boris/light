@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_PARTY</Name>
+  <ID>tbl_BI_PARTY</ID>
+  <Columns>
+    <Column name="party_id" id="party_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_type" id="party_type" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="status_code" id="status_code" index="2" datatype="TEXT" mandatory="true"/>
+    <Column name="created_at" id="created_at" index="3" datatype="TEXT" mandatory="true"/>
+    <Column name="updated_at" id="updated_at" index="4" datatype="TEXT" mandatory="true"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="party_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_PARTY" timestamp="2026-03-04">
+      <ColumnsList>party_id,party_type,status_code,created_at,updated_at</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>

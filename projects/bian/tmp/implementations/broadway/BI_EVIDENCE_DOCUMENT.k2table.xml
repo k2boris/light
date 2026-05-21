@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>BI_EVIDENCE_DOCUMENT</Name>
+  <ID>tbl_BI_EVIDENCE_DOCUMENT</ID>
+  <Columns>
+    <Column name="evidence_document_id" id="evidence_document_id" index="0" datatype="TEXT" mandatory="true"/>
+    <Column name="party_id" id="party_id" index="1" datatype="TEXT" mandatory="true"/>
+    <Column name="kyc_case_id" id="kyc_case_id" index="2" datatype="TEXT"/>
+    <Column name="document_type" id="document_type" index="3" datatype="TEXT" mandatory="true"/>
+    <Column name="document_ref" id="document_ref" index="4" datatype="TEXT"/>
+    <Column name="captured_at" id="captured_at" index="5" datatype="TEXT" mandatory="true"/>
+    <Column name="source_system_id" id="source_system_id" index="6" datatype="TEXT"/>
+    <Column name="source_record_ref" id="source_record_ref" index="7" datatype="TEXT"/>
+  </Columns>
+  <IndexesList>
+    <Index id="1" pk="true" unique="true" instanceOnly="true" columnsIdsList="evidence_document_id"/>
+  </IndexesList>
+  <EnrichmentList/>
+  <LazyDataUpdate syncMethod="Inherited" performEvery="1.00:00:00">
+    <DecisionFunction/>
+  </LazyDataUpdate>
+  <TriggersList/>
+  <BasedOn>
+    <Source interface="fabric" schema="main" table="BI_EVIDENCE_DOCUMENT" timestamp="2026-03-04">
+      <ColumnsList>evidence_document_id,party_id,kyc_case_id,document_type,document_ref,captured_at,source_system_id,source_record_ref</ColumnsList>
+    </Source>
+  </BasedOn>
+</TableObject>
