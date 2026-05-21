@@ -1,6 +1,6 @@
-# Blackbox Mapping Lab
+# Light Engine Mapping Lab
 
-Blackbox is an AI-first mapping lab for complex source-to-target data
+Light Engine is an AI-first mapping lab for complex source-to-target data
 transformations. The project demonstrates that large, multi-source canonical
 mappings can be expressed, generated, executed, debugged, and regression-tested
 with a workflow where AI can inspect the spec, generated code, runtime outputs,
