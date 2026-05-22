@@ -1,3 +1,4 @@
+
 # Light Engine Mapping Lab
 
 Light Engine is an AI-first mapping lab for complex source-to-target data
@@ -89,9 +90,9 @@ runtime/java/                  Common Java runtime core
 projects/
   tmf/                         TMF project assets, runtime, reports, outputs
   bian/                        BIAN project assets, runtime, reports, outputs
-generate.sh                    Generate JSON IR from project spec
-materialize.sh                 Materialize executable/generated artifacts
 validate.sh                    Validate project spec and schema contracts
+generate.sh                    Generate JSON IR from project spec
+materialize.sh                 Materialize executable/generated artifacts - Fabric flows and Java
 requirements.txt               Python dependencies for generator/validation
 ```
 
@@ -104,22 +105,17 @@ projects/tmf/README.md
 projects/bian/README.md
 ```
 
-Project configuration:
-
-```text
-projects/tmf/project.yaml
-projects/bian/project.yaml
-projects/tmf/runtime/java/config/tmf-runtime.properties
-projects/bian/runtime/java/config/bian-runtime.properties
-```
-
-Specs and metadata:
+Specs:
 
 ```text
 projects/tmf/spec/
 projects/bian/spec/
-projects/tmf/metadata/
-projects/bian/metadata/
+```
+Generated Fabric flows:
+
+```text
+projects/tmf/tmp/implementations/broadway/
+projects/bian/tmp/implementations/broadway/
 ```
 
 Generated Java mappings:
@@ -129,27 +125,11 @@ projects/tmf/tmp/implementations/java/src/main/java/com/blackbox/tmf/generated/
 projects/bian/tmp/implementations/java/src/main/java/com/blackbox/bian/generated/
 ```
 
-Runtime applications and reverse checkers:
-
-```text
-projects/tmf/runtime/java/src/main/java/com/blackbox/tmf/
-projects/bian/runtime/java/src/main/java/com/blackbox/bian/
-```
-
-Runtime outputs:
-
-```text
-projects/tmf/tmp/java-runtime/
-projects/bian/tmp/java-runtime/
-```
-
-Golden targets and validators:
+Golden targets:
 
 ```text
 projects/tmf/tests/golden/
 projects/bian/tests/golden/
-projects/tmf/runtime/java/scripts/validate-golden-targets.sh
-projects/bian/runtime/java/scripts/validate-golden-targets.sh
 ```
 
 ## Java Mapping Style
@@ -177,44 +157,9 @@ Step 7: Log source and target row counts.
 
 TMF mappings follow the same section style while staying concise and typed.
 
-## Common Commands
 
-Validate/generate/materialize from spec:
 
-```bash
-./validate.sh -p tmf
-./generate.sh -p tmf
-./materialize.sh -p tmf
-
-./validate.sh -p bian
-./generate.sh -p bian
-./materialize.sh -p bian
-```
-
-Run TMF Java:
-
-```bash
-mvn -q test -f projects/tmf/runtime/java/pom.xml
-projects/tmf/runtime/java/scripts/smoke-party.sh
-PYTHONDONTWRITEBYTECODE=1 projects/tmf/runtime/java/scripts/validate-golden-targets.sh
-```
-
-Run BIAN Java:
-
-```bash
-mvn -q test -f projects/bian/runtime/java/pom.xml
-projects/bian/runtime/java/scripts/smoke-bian.sh
-PYTHONDONTWRITEBYTECODE=1 projects/bian/runtime/java/scripts/validate-golden-targets.sh
-```
-
-Clean outputs:
-
-```bash
-projects/tmf/runtime/java/scripts/clean-party.sh
-projects/bian/runtime/java/scripts/clean-bian.sh
-```
-
-## Debugging Workflow
+## Step-by-step
 
 The intended workflow is:
 
