@@ -1,13 +1,17 @@
-
 # Light Engine Mapping Lab
 
-Light Engine is an AI-first mapping lab for complex source-to-target data
-transformations. The project demonstrates that large, multi-source canonical
+Light Engine is an AI-first mapping lab for complex source-to-target data transformations. 
+
+The focus of the lab is to demonstrate that large, multi-source canonical
 mappings can be expressed, generated, executed, debugged, and regression-tested
-with a workflow where AI can inspect the spec, generated code, runtime outputs,
+with a **Java-only** workflow and runtime where AI can inspect the spec, generated code, runtime outputs,
 logs, reverse mappings, and golden comparisons.
 
-The current focus is Java executable mappings for two canonical projects:
+While K2view Fabric implementation is also included in the project, it is used as a reference for achieving operational  equivalence between Java-only and Fabric executions.
+
+## Description
+
+This lab implements executable mappings for two canonical projects:
 
 - `TMF`: telecom/customer/product canonical mapping.
 - `BIAN`: banking/KYC/screening canonical mapping.
